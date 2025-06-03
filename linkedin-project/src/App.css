@@ -1,3 +1,16 @@
 body {
-    background-color: #F4F2EE;
+  background-color: #f4f2ee;
+}
+svg {
+  width: 24px;
+}
+.pen-icon {
+  top: -15px;
+}
+.show:hover {
+  background-color: lightgray;
+}
+.btn-outline-dark {
+  --bs-btn-hover-bg: lightgray !important;
+  --bs-btn-hover-color: black !important;
 }

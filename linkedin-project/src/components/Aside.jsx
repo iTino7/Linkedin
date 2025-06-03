@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { Button, Container, Row } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import SinglePerson from "./SinglePerson";
+import PenIcon from "./PenIcon";
 
 const Aside = () => {
   const [person, setPerson] = useState([]);
@@ -32,11 +33,17 @@ const Aside = () => {
   return (
     <Container className="p-3">
       <div className="px-4 py-2 bg-white rounded-2 border">
-        <div>
+        <div className="position-relative">
+          <div className="position-absolute end-0 pen-icon">
+            <PenIcon />
+          </div>
           <h5>Lingua del profilo</h5>
           <p className="border-bottom pb-3">italiano</p>
         </div>
-        <div>
+        <div className="position-relative">
+          <div className="position-absolute end-0 pen-icon">
+            <PenIcon />
+          </div>
           <h5>Profilo pubblico e URL</h5>
           <p>www.linkedin.com/me-6e3491f</p>
         </div>
@@ -49,7 +56,7 @@ const Aside = () => {
           ))}
         </div>
 
-        <div className="text-center p-3 border-top">Mostar tutto</div>
+        <div className="text-center show p-3 border-top">Mostar tutto</div>
       </div>
     </Container>
   );

@@ -1,4 +1,5 @@
 import { Button } from "react-bootstrap";
+import AddFriend from "./AddFriend";
 
 const SinglePerson = ({ person }) => {
   return (
@@ -11,8 +12,8 @@ const SinglePerson = ({ person }) => {
           {person.name} {person.surname}
         </h5>
         <p>{person.title}</p>
-        <Button variant="outline-dark" className="rounded-pill mb-2">
-          Collegati
+        <Button variant="outline-dark" className="rounded-pill mb-2 d-flex align-items-center gap-1 py-0">
+          <AddFriend /> <span>Collegati</span>
         </Button>
       </div>
     </div>

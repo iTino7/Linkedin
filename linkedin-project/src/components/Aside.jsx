@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { Button, Container, Row } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import SinglePerson from "./SinglePerson";
+import PenIcon from "./PenIcon";
 
 
 const Aside = () => {
@@ -39,21 +40,31 @@ const Aside = () => {
 
   return (
     <Container className="p-3">
-      <div className="px-4 py-2 bg-white rounded-2">
-        <div>
+      <div className="px-4 py-2 bg-white rounded-2 border">
+        <div className="position-relative">
+          <div className="position-absolute end-0 pen-icon">
+            <PenIcon />
+          </div>
           <h5>Lingua del profilo</h5>
           <p className="border-bottom pb-3">italiano</p>
         </div>
-        <div>
+        <div className="position-relative">
+          <div className="position-absolute end-0 pen-icon">
+            <PenIcon />
+          </div>
           <h5>Profilo pubblico e URL</h5>
           <p>www.linkedin.com/me-6e3491f</p>
         </div>
       </div>
-      <div className="px-4 mt-2 py-2 bg-white rounded-2">
-        <h5>Persone che potresti conoscere</h5>
-        {person?.slice(2, 10).map((person) => (
-          <SinglePerson person={person} />
-        ))}
+      <div className=" bg-white rounded-2 mt-2 border">
+        <div className="px-4 pt-2  rounded-2">
+          <h5>Persone che potresti conoscere</h5>
+          {person?.slice(0, 5).map((person) => (
+            <SinglePerson key={person._id} person={person} />
+          ))}
+        </div>
+
+        <div className="text-center show p-3 border-top">Mostar tutto</div>
       </div>
     </Container>
   );

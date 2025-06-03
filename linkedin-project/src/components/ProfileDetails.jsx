@@ -50,7 +50,7 @@ function ProfileDetails() {
                 >
                   <img
                     src={profile.image}
-                    alt=""
+                    alt="profile"
                     className="rounded-circle"
                     style={{
                       width: "100%",
@@ -59,7 +59,7 @@ function ProfileDetails() {
                     }}
                   />
 
-                  <i className="bi bi-person-circle p-1"></i>
+                  
 
                   <div
                     className="bg-white border rounded-circle p-1"

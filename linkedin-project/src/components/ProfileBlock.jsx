@@ -27,7 +27,7 @@ const ProfileBlock = () => {
     return <div>Caricamento profilo...</div>;
   }
   return (
-    <Card className="mx-auto mt-4 shadow rounded-4" style={{ maxWidth: "720px" }}>
+    <Card className="mx-auto mt-4 rounded">
       <div className="bg-light" style={{ height: "140px", position: "relative" }}>
         <div
           className="rounded-circle bg-secondary border border-white"

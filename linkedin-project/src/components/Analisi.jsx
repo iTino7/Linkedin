@@ -7,11 +7,10 @@ import AnalysesInfo from "./AnalysesInfo";
 function Analisi() {
   return (
     <>
-      <Container >
+      <Container>
         <Row>
           <Col
             xs={12}
-            sm={10}
             className="bg-white border rounded mt-3 py-3 d-flex flex-column "
           >
             <h4 className="mb-1">Analisi</h4>

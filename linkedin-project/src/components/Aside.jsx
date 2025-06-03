@@ -2,16 +2,19 @@ import { useEffect, useState } from "react";
 import { Button, Container } from "react-bootstrap";
 import SinglePerson from "./SinglePerson";
 import PenIcon from "./PenIcon";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { XLg } from "react-bootstrap-icons";
+import { notScrollAction } from "../redux/action";
 
 const Aside = () => {
   const [person, setPerson] = useState([]);
   const [big, setBig] = useState(false);
   const idNow = useSelector((state) => state.profile.user._id);
+  const dispatch = useDispatch();
 
   const bigToggle = () => {
     setBig(!big);
+    dispatch(notScrollAction());
   };
   const fetchPerson = async () => {
     console.log("fetching...");

@@ -2,6 +2,11 @@ import { Button } from "react-bootstrap";
 import AddFriend from "./AddFriend";
 
 const SinglePerson = ({ person }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/profile/${person._id}`);
+  };
   return (
     <div className="d-flex border-bottom mt-3 gap-2">
       <div>
@@ -12,7 +17,7 @@ const SinglePerson = ({ person }) => {
           {person.name} {person.surname}
         </h5>
         <p>{person.title}</p>
-        <Button variant="outline-dark" className="rounded-pill mb-2 d-flex align-items-center gap-1 py-0">
+        <Button onClick={handleClick()} variant="outline-dark" className="rounded-pill mb-2 d-flex align-items-center gap-1 py-0">
           <AddFriend /> <span>Collegati</span>
         </Button>
       </div>

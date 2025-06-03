@@ -1,10 +1,10 @@
 export const SET_PROFILE = "SET_PROFILE";
 
-export const profileAction = (token) => {
+export const profileAction = (token, profiles) => {
   return async (dispatch) => {
     try {
       const resp = await fetch(
-        "https://striveschool-api.herokuapp.com/api/profile/me",
+        `https://striveschool-api.herokuapp.com/api/profile/${profiles}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -20,4 +20,3 @@ export const profileAction = (token) => {
     }
   };
 };
-

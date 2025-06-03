@@ -15,7 +15,7 @@ const ProfileBlock = () => {
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODNlYjBiM2IxMGJmMDAwMTVjZjIyYTQiLCJpYXQiOjE3NDg5Mzg5MzEsImV4cCI6MTc1MDE0ODUzMX0.x7bYpZXsMIBHVOtE_a-UyTnY_qWaBm7IsdvFovn6KL0";
 
   useEffect(() => {
-    dispatch(profileAction(TOKEN));
+    dispatch(profileAction(TOKEN,"me"));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

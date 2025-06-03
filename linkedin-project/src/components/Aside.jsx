@@ -2,19 +2,24 @@ import { useEffect, useState } from "react";
 import { Button, Container, Row } from "react-bootstrap";
 import SinglePerson from "./SinglePerson";
 
+
 const Aside = () => {
+  
   const [person, setPerson] = useState([]);
   const fetchPerson = async () => {
     console.log("fetching...");
 
     try {
-      const response = await fetch("https://striveschool-api.herokuapp.com/api/profile/", {
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODNlZWE1NWIxMGJmMDAwMTVjZjIyYjkiLCJpYXQiOjE3NDg5NTM2ODUsImV4cCI6MTc1MDE2MzI4NX0.pemHLRY2bnO3zlDpHj6cgjC0NoNWrGI06p-2tFtn82s",
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        "https://striveschool-api.herokuapp.com/api/profile/",
+        {
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODNlZWE1NWIxMGJmMDAwMTVjZjIyYjkiLCJpYXQiOjE3NDg5NTM2ODUsImV4cCI6MTc1MDE2MzI4NX0.pemHLRY2bnO3zlDpHj6cgjC0NoNWrGI06p-2tFtn82s",
+            "Content-Type": "application/json",
+          },
+        }
+      );
       if (response.ok) {
         const person = await response.json();
 
@@ -29,6 +34,9 @@ const Aside = () => {
   useEffect(() => {
     fetchPerson();
   }, []);
+
+
+
   return (
     <Container className="p-3">
       <div className="px-4 py-2 bg-white rounded-2">

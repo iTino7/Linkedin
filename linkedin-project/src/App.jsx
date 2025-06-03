@@ -1,15 +1,14 @@
-
-import './App.css'
-import InfoBlock from './components/InfoBlock'
+import "./App.css";
+import InfoBlock from "./components/InfoBlock";
+import ProfileBlock from "./componets/ProfileBlock";
 
 function App() {
-
-
   return (
     <>
-     <InfoBlock/>
+      <ProfileBlock />
+      <InfoBlock/>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

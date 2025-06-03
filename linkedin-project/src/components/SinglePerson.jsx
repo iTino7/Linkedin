@@ -1,5 +1,6 @@
 import { Button } from "react-bootstrap";
 import AddFriend from "./AddFriend";
+import { useNavigate } from "react-router-dom";
 
 const SinglePerson = ({ person }) => {
   const navigate = useNavigate();

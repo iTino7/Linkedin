@@ -1,26 +1,29 @@
 import { useEffect, useState } from "react";
-import { Container } from "react-bootstrap";
+import { Button, Container } from "react-bootstrap";
 import SinglePerson from "./SinglePerson";
 import PenIcon from "./PenIcon";
-
+import { useSelector } from "react-redux";
+import { XLg } from "react-bootstrap-icons";
 
 const Aside = () => {
-  
   const [person, setPerson] = useState([]);
+  const [big, setBig] = useState(false);
+  const idNow = useSelector((state) => state.profile.user._id);
+
+  const bigToggle = () => {
+    setBig(!big);
+  };
   const fetchPerson = async () => {
     console.log("fetching...");
 
     try {
-      const response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/profile/",
-        {
-          headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODNlZWE1NWIxMGJmMDAwMTVjZjIyYjkiLCJpYXQiOjE3NDg5NTM2ODUsImV4cCI6MTc1MDE2MzI4NX0.pemHLRY2bnO3zlDpHj6cgjC0NoNWrGI06p-2tFtn82s",
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await fetch("https://striveschool-api.herokuapp.com/api/profile/", {
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODNlZWE1NWIxMGJmMDAwMTVjZjIyYjkiLCJpYXQiOjE3NDg5NTM2ODUsImV4cCI6MTc1MDE2MzI4NX0.pemHLRY2bnO3zlDpHj6cgjC0NoNWrGI06p-2tFtn82s",
+          "Content-Type": "application/json",
+        },
+      });
       if (response.ok) {
         const person = await response.json();
 
@@ -32,11 +35,10 @@ const Aside = () => {
       console.log(error);
     }
   };
+
   useEffect(() => {
     fetchPerson();
   }, []);
-
-
 
   return (
     <Container className="p-3">
@@ -59,13 +61,39 @@ const Aside = () => {
       <div className=" bg-white rounded-2 mt-2 border">
         <div className="px-4 pt-2  rounded-2">
           <h5>Persone che potresti conoscere</h5>
-          {person?.slice(0, 5).map((person) => (
-            <SinglePerson key={person._id} person={person} />
-          ))}
+          {person
+            ?.filter((person) => person._id !== idNow)
+            .slice(0, 5)
+            .map((person) => (
+              <SinglePerson key={person._id} person={person} />
+            ))}
         </div>
 
-        <div className="text-center show p-3 border-top">Mostar tutto</div>
+        <div className="text-center show p-3 border-top" onClick={() => bigToggle()}>
+          Mostar tutto
+        </div>
       </div>
+      {big && (
+        <div className="position-fixed  top-0 start-0 frend-big">
+          <Container>
+            <div className="bg-white rounded-3 mt-5 frend-scroll ">
+              <div className="p-4 sticky-top rounded-3 top-0 bg-white  border-bottom text-frend  mb-0 d-flex align-items-center ">
+                <h5 className="m-0 p-0"> Persone che potresti conoscere </h5>
+                <XLg className="ms-auto" onClick={() => bigToggle()} />
+              </div>
+
+              <div className=" px-5 ">
+                {person
+                  ?.filter((person) => person._id !== idNow)
+                  .slice(0, 15)
+                  .map((person) => (
+                    <SinglePerson key={person._id} person={person} bigToggle={bigToggle} big={big} />
+                  ))}
+              </div>
+            </div>
+          </Container>
+        </div>
+      )}
     </Container>
   );
 };

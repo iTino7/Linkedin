@@ -14,3 +14,16 @@ svg {
   --bs-btn-hover-bg: lightgray !important;
   --bs-btn-hover-color: black !important;
 }
+.text-frend {
+  top: 48px;
+  width: 100%;
+}
+.frend-big {
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.44);
+}
+.frend-scroll {
+  overflow: auto;
+  height: 70vh;
+}

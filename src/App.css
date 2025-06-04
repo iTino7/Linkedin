@@ -33,3 +33,6 @@ svg {
   overflow: hidden;
   height: 100vh;
 }
+.add-coll {
+  fill: white !important;
+}

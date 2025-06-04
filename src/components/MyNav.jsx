@@ -1,5 +1,6 @@
 import { Col, Container, Form, Nav, Navbar, NavDropdown, Row } from "react-bootstrap";
 import { BellFill, BriefcaseFill, ChatDotsFill, HouseDoorFill, PeopleFill, PersonFill, Grid3x3GapFill } from "react-bootstrap-icons"; // Importata Grid3x3GapFill per l'icona "Per le aziende"
+import { Link } from "react-router-dom";
 
 function MyNav() {
   return (
@@ -59,7 +60,9 @@ function MyNav() {
             id="basic-nav-dropdown"
             className="mx-2"
           >
-            <NavDropdown.Item href="#action/3.1">Visualizza profilo</NavDropdown.Item>
+            <Link to={"/profile/me"} className=" dropdown-item">
+              Visualizza profilo
+            </Link>
             <NavDropdown.Divider />
             <NavDropdown.Item href="#action/3.2">Impostazioni e privacy</NavDropdown.Item>
             <NavDropdown.Item href="#action/3.3">Aiuto</NavDropdown.Item>

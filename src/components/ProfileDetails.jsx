@@ -1,10 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import InfoBlock from "./InfoBlock";
 import Aside from "./Aside";
 import { useDispatch, useSelector } from "react-redux";
-import { profileAction } from "../redux/action";
+import { notScrollAction, profileAction } from "../redux/action";
+import Chat from "./Chat";
+import { PlusCircleFill } from "react-bootstrap-icons";
+import MyModals from "./MyModals";
+import AddFriend from "./AddFriend";
 
 function ProfileDetails() {
   const TOKEN =
@@ -14,10 +18,14 @@ function ProfileDetails() {
 
   const profile = useSelector((state) => state.profile.user);
   const scroll = useSelector((state) => state.scroll.value);
+  const exp = useSelector((state) => state.exp.value);
+  const [big, setBig] = useState(false);
 
+  const bigToggle = () => {
+    setBig(!big);
+    dispatch(notScrollAction());
+  };
   const params = useParams();
-
-  console.log(params);
 
   useEffect(() => {
     dispatch(profileAction(TOKEN, params.userId));
@@ -67,7 +75,7 @@ function ProfileDetails() {
                       color: "#0d6efd",
                     }}
                   >
-                    <i className="bi bi-plus-circle-fill"></i>
+                    {params.userId === "me" && <PlusCircleFill style={{ cursor: "pointer" }} onClick={() => bigToggle()} />}{" "}
                   </div>
                 </div>
               </div>
@@ -86,13 +94,21 @@ function ProfileDetails() {
                   <a href="#">collegamenti</a>
                 </p>
                 <div className="d-flex flex-wrap gap-2 my-3">
-                  <button className="btn btn-primary rounded-pill fw-bold px-3 py-1">Disponibile per</button>
+                  <button className="btn btn-primary rounded-pill fw-bold px-3 py-1">
+                    {params.userId === "me" ? (
+                      "Disponibile per"
+                    ) : (
+                      <div className="d-flex align-items-center add-coll gap-1">
+                        <AddFriend />
+                        <span>Collegati</span>
+                      </div>
+                    )}
+                  </button>
 
-                  <button className="btn btn-outline-primary rounded-pill px-3 py-1">Aggiungi sezione del profilo</button>
+                  {params.userId === "me" && <button className="btn btn-outline-primary rounded-pill px-3 py-1">Aggiungi sezione del profilo</button>}
+                  <button className="btn btn-outline-primary rounded-pill px-3 py-1">{params.userId === "me" ? "Migliora profilo" : "Messaggio"}</button>
 
-                  <button className="btn btn-outline-primary rounded-pill px-3 py-1">Migliora profilo</button>
-
-                  <button className="btn btn-outline-dark rounded-pill px-3 py-1">Risorse</button>
+                  <button className="btn btn-outline-dark rounded-pill px-3 py-1"> {params.userId === "me" ? "Risorse" : "Altro"}</button>
                 </div>
                 <Row className="g-3">
                   <Col md={6}>
@@ -127,12 +143,14 @@ function ProfileDetails() {
                 </Row>
               </Card.Body>
             </Card>
-            <InfoBlock />
+            <MyModals big={big} bigToggle={bigToggle} exp={exp} />
+            <InfoBlock bigToggle={bigToggle} />
           </Col>
           <Col xs={12} md={4}>
             <Aside />
           </Col>
         </Row>
+        <Chat />
       </Container>
     </>
   );

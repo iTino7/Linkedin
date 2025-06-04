@@ -11,6 +11,7 @@ import MyModals from "./MyModals";
 const ProfileBlock = () => {
   const profile = useSelector((state) => state.profile.user);
   const img = useSelector((state) => state.image.img);
+
   const dispatch = useDispatch();
   const [big, setBig] = useState(false);
 

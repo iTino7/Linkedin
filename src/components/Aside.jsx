@@ -44,7 +44,7 @@ const Aside = () => {
   }, []);
 
   return (
-    <Container className="p-3">
+    <Container className="px-0 mt-4">
       <div className="px-4 py-2 bg-white rounded-2 border">
         <div className="position-relative">
           <div className="position-absolute end-0 pen-icon">

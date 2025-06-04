@@ -29,7 +29,7 @@ function ProfileDetails() {
       <Container className={scroll ? "" : "notScroll"}>
         <Row>
           <Col xs={12} md={8}>
-            <Card className="mx-auto mt-4 rounded">
+            <Card className="mx-auto mt-4 rounded overflow-hidden">
               <div className="bg-light" style={{ height: "140px", position: "relative" }}>
                 <div
                   className="rounded-circle bg-secondary border border-white"

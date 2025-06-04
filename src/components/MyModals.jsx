@@ -17,7 +17,7 @@ function MyModals({ big, bigToggle }) {
       formData.append("profile", file);
 
       const resp = await fetch(
-        "https://striveschool-api.herokuapp.com/api/profile/681479fc1c250400151ab652/picture",
+        "https://striveschool-api.herokuapp.com/api/profile/683eb0b3b10bf00015cf22a4/picture",
         {
           method: "POST",
           body: formData,

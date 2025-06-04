@@ -1,11 +1,13 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import profilesReduces from "../reducers/profileReducers";
-import { notScrollAction } from "../action";
+
 import notScrollReducers from "../reducers/notScrollReducers";
+import imgReducers from "../reducers/imgReducers";
 
 const rootReducers = combineReducers({
   profile: profilesReduces,
   scroll: notScrollReducers,
+  image: imgReducers,
 });
 
 const store = configureStore({

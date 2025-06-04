@@ -1,13 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Container, Form } from "react-bootstrap";
 import { XLg } from "react-bootstrap-icons";
+import { useDispatch } from "react-redux";
+import { profileAction } from "../redux/action";
 
 function MyModals({ big, bigToggle }) {
   const [modal, setModal] = useState(null);
 
+  const dispatch = useDispatch();
+
+  const TOKEN =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODNlYjBiM2IxMGJmMDAwMTVjZjIyYTQiLCJpYXQiOjE3NDg5Mzg5MzEsImV4cCI6MTc1MDE0ODUzMX0.x7bYpZXsMIBHVOtE_a-UyTnY_qWaBm7IsdvFovn6KL0";
+
   const handleImage = (e) => {
     if (e.target.files[0]) {
       imageFetch(e.target.files[0]);
+      setModal(e.target.files[0]);
     }
   };
 
@@ -23,14 +31,13 @@ function MyModals({ big, bigToggle }) {
           body: formData,
           headers: {
             Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODE0NzlmYzFjMjUwNDAwMTUxYWI2NTIiLCJpYXQiOjE3NDkwMjIxODQsImV4cCI6MTc1MDIzMTc4NH0.7Szsao5jVpzG3jKFYe1rXQQEQaQboxVSvHLIzlnp8Ew",
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODNlYjBiM2IxMGJmMDAwMTVjZjIyYTQiLCJpYXQiOjE3NDg5Mzg5MzEsImV4cCI6MTc1MDE0ODUzMX0.x7bYpZXsMIBHVOtE_a-UyTnY_qWaBm7IsdvFovn6KL0",
           },
         }
       );
 
       if (resp.ok) {
-        const data = await resp.json();
-        setModal(data);
+        return resp.json();
       } else {
         throw new Error("errore nella fetch");
       }
@@ -38,6 +45,11 @@ function MyModals({ big, bigToggle }) {
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    dispatch(profileAction(TOKEN, "me"));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [modal]);
 
   console.log(modal);
 

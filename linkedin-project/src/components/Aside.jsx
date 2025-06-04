@@ -70,7 +70,7 @@ const Aside = () => {
         </div>
 
         <div className="text-center show p-3 border-top" onClick={() => bigToggle()}>
-          Mostar tutto
+          Mostra tutto
         </div>
       </div>
       {big && (

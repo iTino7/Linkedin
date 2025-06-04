@@ -1,13 +1,21 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import { Card, Button, Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { useDispatch, useSelector } from "react-redux";
 import { profileAction } from "../redux/action";
+import { PlusCircleFill } from "react-bootstrap-icons";
+import MyModals from "./MyModals";
 
 const ProfileBlock = () => {
   const profile = useSelector((state) => state.profile.user);
+
+  const [big, setBig] = useState(false);
+
+  const bigToggle = () => {
+    setBig(!big);
+  };
 
   const dispatch = useDispatch();
 
@@ -15,7 +23,8 @@ const ProfileBlock = () => {
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODNlYjBiM2IxMGJmMDAwMTVjZjIyYTQiLCJpYXQiOjE3NDg5Mzg5MzEsImV4cCI6MTc1MDE0ODUzMX0.x7bYpZXsMIBHVOtE_a-UyTnY_qWaBm7IsdvFovn6KL0";
 
   useEffect(() => {
-    dispatch(profileAction(TOKEN,"me"));
+    dispatch(profileAction(TOKEN, "me"));
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -83,7 +92,10 @@ const ProfileBlock = () => {
                 color: "#0d6efd",
               }}
             >
-              <i className="bi bi-plus-circle-fill"></i>
+              <PlusCircleFill
+                style={{ cursor: "pointer" }}
+                onClick={() => bigToggle()}
+              />
             </div>
           </div>
         </div>
@@ -159,6 +171,7 @@ const ProfileBlock = () => {
           </Row>
         </Card.Body>
       </Card>
+      <MyModals big={big} bigToggle={bigToggle} />
     </>
   );
 };

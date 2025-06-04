@@ -59,8 +59,6 @@ function ProfileDetails() {
                     }}
                   />
 
-                  
-
                   <div
                     className="bg-white border rounded-circle p-1"
                     style={{

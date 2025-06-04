@@ -3,6 +3,7 @@ import CustomForm from "./CustomForm";
 import Analisi from "./Analisi";
 import JustForYou from "./JustForYou";
 import ProfileBlock from "./ProfileBlock";
+import MyExperiences from "./MyExperiences";
 
 function InfoBlock() {
   return (
@@ -20,6 +21,7 @@ function InfoBlock() {
         </Row>
       </Container>
       <Analisi />
+      <MyExperiences/>
     </>
   );
 }

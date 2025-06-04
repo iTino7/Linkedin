@@ -3,6 +3,8 @@ import { XLg } from "react-bootstrap-icons";
 import { useDispatch } from "react-redux";
 import { imgAction, SET_IMG } from "../redux/action";
 import { useNavigate } from "react-router-dom";
+import ChangePhoto from "./ChangePhoto";
+import ModalExperiences from "./ModalExperiences";
 
 function MyModals({ big, bigToggle }) {
   const navigate = useNavigate();
@@ -63,17 +65,8 @@ function MyModals({ big, bigToggle }) {
               </div>
 
               <div className=" px-5 ">
-                <Form.Group  controlId="formFile" className="mb-3">
-                  <Form.Label></Form.Label>
-                  <Form.Control type="file" onChange={handleImage} />
-                  <Button
-                    variant="primary"
-                    type="submit"
-                    onClick={handleSubmit}
-                  >
-                    Submit
-                  </Button>
-                </Form.Group>
+                {/* <ChangePhoto img={handleImage} submit={handleSubmit} /> */}
+                <ModalExperiences />
               </div>
             </div>
           </Container>

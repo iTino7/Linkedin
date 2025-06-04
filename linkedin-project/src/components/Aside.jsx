@@ -67,13 +67,13 @@ const Aside = () => {
           {person
             ?.filter((person) => person._id !== idNow)
             .slice(0, 5)
-            .map((person) => (
-              <SinglePerson key={person._id} person={person} />
+            .map((person, i) => (
+              <SinglePerson key={person._id} person={person} last={i === 4 && true} />
             ))}
         </div>
 
         <div className="text-center show p-3 border-top" onClick={() => bigToggle()}>
-          Mostar tutto
+          Mostra tutto
         </div>
       </div>
       {big && (
@@ -89,8 +89,8 @@ const Aside = () => {
                 {person
                   ?.filter((person) => person._id !== idNow)
                   .slice(0, 15)
-                  .map((person) => (
-                    <SinglePerson key={person._id} person={person} bigToggle={bigToggle} big={big} />
+                  .map((person, i) => (
+                    <SinglePerson key={person._id} person={person} bigToggle={bigToggle} big={big} last={i === 14 && true} />
                   ))}
               </div>
             </div>

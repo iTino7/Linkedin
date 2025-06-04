@@ -1,8 +1,9 @@
 import { Button } from "react-bootstrap";
 import AddFriend from "./AddFriend";
 import { useNavigate } from "react-router-dom";
+import { Last } from "react-bootstrap/esm/PageItem";
 
-const SinglePerson = ({ person, bigToggle, big }) => {
+const SinglePerson = ({ person, bigToggle, big, last }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -11,7 +12,7 @@ const SinglePerson = ({ person, bigToggle, big }) => {
   };
 
   return (
-    <div className="d-flex border-bottom mt-3 gap-2">
+    <div className={`d-flex  mt-3 gap-2 ${!last && "border-bottom"}`}>
       <div>
         <img src={person.image} alt="" className="rounded-circle " width={48} height={48} />
       </div>

@@ -3,6 +3,7 @@ import InfoBlock from "./InfoBlock";
 import ProfileBlock from "./ProfileBlock";
 import Aside from "./Aside";
 import { useSelector } from "react-redux";
+import Chat from "./Chat";
 
 function Profile() {
   const scroll = useSelector((state) => state.scroll.value);
@@ -18,6 +19,7 @@ function Profile() {
           <Aside />
         </Col>
       </Row>
+      <Chat />
     </Container>
   );
 }

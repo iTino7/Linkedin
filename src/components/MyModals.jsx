@@ -54,7 +54,7 @@ function MyModals({ big, bigToggle }) {
   return (
     <>
       {big && (
-        <div className="position-fixed z-1 top-0 start-0 frend-big">
+        <div className="position-fixed z-2 top-0 start-0 frend-big">
           <Container>
             <div className="bg-white rounded-3 mt-5 frend-scroll ">
               <div className="p-4 sticky-top rounded-3 top-0 bg-white  border-bottom text-frend  mb-0 d-flex align-items-center ">
@@ -63,7 +63,7 @@ function MyModals({ big, bigToggle }) {
               </div>
 
               <div className=" px-5 ">
-                <Form.Group controlId="formFile" className="mb-3">
+                <Form.Group  controlId="formFile" className="mb-3">
                   <Form.Label></Form.Label>
                   <Form.Control type="file" onChange={handleImage} />
                   <Button

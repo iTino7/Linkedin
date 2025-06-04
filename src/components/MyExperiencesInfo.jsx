@@ -1,49 +1,30 @@
-import React, { useEffect, useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { idAction } from "../redux/action";
 
-function MyExperiencesInfo() {
-  const [info, setInfo] = useState([]);
+function MyExperiencesInfo({ item }) {
+  const dispatch = useDispatch();
 
-
-
-  const infoFetch = async () => {
-    try {
-      const resp = await fetch(
-        "https://striveschool-api.herokuapp.com/api/profile/681479fc1c250400151ab652/experiences",
-        {
-          headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODE0NzlmYzFjMjUwNDAwMTUxYWI2NTIiLCJpYXQiOjE3NDkwMjIxODQsImV4cCI6MTc1MDIzMTc4NH0.7Szsao5jVpzG3jKFYe1rXQQEQaQboxVSvHLIzlnp8Ew",
-          },
-        }
-      );
-
-      if (resp.ok) {
-        const data = await resp.json();
-        setInfo(data);
-      } else {
-        throw new Error("errore nella fetch");
-      }
-    } catch (error) {
-      console.log(error);
-    }
+  const changeId = () => {
+    dispatch(idAction(item._id));
   };
 
-  useEffect(() => {
-    infoFetch();
-  }, []);
-
-  console.log(info);
-
   return (
-    <Container fluid>
+    <Container
+      fluid
+      className="bg-white border rounded mt-3 py-3 d-flex flex-column "
+    >
+      <h4 className="mb-1">Esperienze</h4>
       <Row>
         <Col xs={12} sm={5} md={3} className="d-flex flex-column mt-3 ">
-          {info.map((item, index) => (
-            <p className="mb-0" key={index}>
-              {item.username}
-            </p>
-          ))}
+          <p className="mb-0">{item.role}</p>
+          <p className="mb-0">{item.company}</p>
+          <p className="mb-0">
+            {item.startDate.split("-")[0]} - {item.endDate.split("-")[0]}
+          </p>
+          <p className="mb-2">{item.area}</p>
+          <p className="fw-bold">{item.description}</p>
+          <Button onClick={() => changeId()}>Modifica</Button>
         </Col>
       </Row>
     </Container>

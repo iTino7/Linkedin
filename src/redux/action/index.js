@@ -1,4 +1,5 @@
 export const SET_PROFILE = "SET_PROFILE";
+export const SET_IMG = "SET_IMG";
 
 export const profileAction = (token, profiles) => {
   return async (dispatch) => {
@@ -20,3 +21,4 @@ export const profileAction = (token, profiles) => {
     }
   };
 };
+export const imgAction = (img) => ({ type: SET_IMG, payload: img });

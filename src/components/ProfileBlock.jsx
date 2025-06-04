@@ -10,6 +10,7 @@ import MyModals from "./MyModals";
 
 const ProfileBlock = () => {
   const profile = useSelector((state) => state.profile.user);
+  const img = useSelector((state) => state.image.img);
 
   const [big, setBig] = useState(false);
 
@@ -26,29 +27,7 @@ const ProfileBlock = () => {
     dispatch(profileAction(TOKEN, "me"));
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  // const [profile, setProfile] = useState(null);
-
-  // const TOKEN =
-  //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODNlYjBiM2IxMGJmMDAwMTVjZjIyYTQiLCJpYXQiOjE3NDg5Mzg5MzEsImV4cCI6MTc1MDE0ODUzMX0.x7bYpZXsMIBHVOtE_a-UyTnY_qWaBm7IsdvFovn6KL0";
-
-  // useEffect(() => {
-  //   fetch("https://striveschool-api.herokuapp.com/api/profile/me", {
-  //     headers: {
-  //       Authorization: `Bearer ${TOKEN}`,
-  //     },
-  //   })
-  //     .then((res) => {
-  //       if (!res.ok) throw new Error("Errore nel caricamento profilo");
-  //       return res.json();
-  //     })
-  //     .then((data) => setProfile(data))
-  //     .catch((err) => console.error(err));
-  // }, []);
-  // if (!profile) {
-  //   return <div>Caricamento profilo...</div>;
-  // }
+  }, [img]);
 
   return (
     <>

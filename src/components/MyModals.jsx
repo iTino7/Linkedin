@@ -1,11 +1,16 @@
-import { useEffect, useState } from "react";
-import { Container, Form } from "react-bootstrap";
+import { Button, Container, Form } from "react-bootstrap";
 import { XLg } from "react-bootstrap-icons";
 import { useDispatch } from "react-redux";
-import { profileAction } from "../redux/action";
+import { imgAction, SET_IMG } from "../redux/action";
+import { useNavigate } from "react-router-dom";
 
 function MyModals({ big, bigToggle }) {
-  const [modal, setModal] = useState(null);
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    navigate(`/profile/me`);
+  };
 
   const dispatch = useDispatch();
 
@@ -15,7 +20,7 @@ function MyModals({ big, bigToggle }) {
   const handleImage = (e) => {
     if (e.target.files[0]) {
       imageFetch(e.target.files[0]);
-      setModal(e.target.files[0]);
+      dispatch(imgAction(e.target.files[0].lastModified));
     }
   };
 
@@ -46,13 +51,6 @@ function MyModals({ big, bigToggle }) {
     }
   };
 
-  useEffect(() => {
-    dispatch(profileAction(TOKEN, "me"));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [modal]);
-
-  console.log(modal);
-
   return (
     <>
       {big && (
@@ -68,6 +66,13 @@ function MyModals({ big, bigToggle }) {
                 <Form.Group controlId="formFile" className="mb-3">
                   <Form.Label></Form.Label>
                   <Form.Control type="file" onChange={handleImage} />
+                  <Button
+                    variant="primary"
+                    type="submit"
+                    onClick={handleSubmit}
+                  >
+                    Submit
+                  </Button>
                 </Form.Group>
               </div>
             </div>

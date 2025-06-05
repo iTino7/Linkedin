@@ -47,7 +47,7 @@ function MyExperiences({ bigToggle }) {
           <Row>
             <div className="d-flex align-items-center justify-content-between">
               <h4 className="mb-1">Esperienze</h4>
-              {idP === "me" && <PlusLg onClick={() => handleClick()} />}{" "}
+              {idP === "me" && <PlusLg onClick={() => handleClick()} />}
             </div>
             <Col xs={12} className="px-0">
               {info.map((item, index) => (

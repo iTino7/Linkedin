@@ -32,7 +32,10 @@ const ProfileBlock = () => {
   return (
     <>
       <Card className="mx-auto mt-4 rounded overflow-hidden">
-        <div className="bg-light" style={{ height: "140px", position: "relative" }}>
+        <div
+          className="bg-light"
+          style={{ height: "140px", position: "relative" }}
+        >
           <div
             className="rounded-circle bg-secondary border border-white"
             style={{
@@ -49,7 +52,12 @@ const ProfileBlock = () => {
             }}
           >
             {profile.image ? (
-              <img src={profile.image} alt="profile" className="rounded-circle" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+              <img
+                src={profile.image}
+                alt="profile"
+                className="rounded-circle"
+                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              />
             ) : (
               <i className="bi bi-person-circle p-1"></i>
             )}
@@ -63,14 +71,21 @@ const ProfileBlock = () => {
                 color: "#0d6efd",
               }}
             >
-              <PlusCircleFill style={{ cursor: "pointer" }} onClick={() => bigToggle()} />
+              <PlusCircleFill
+                style={{ cursor: "pointer" }}
+                onClick={() => bigToggle()}
+              />
             </div>
           </div>
         </div>
         <Card.Body className="pt-5">
           <h5 className="fw-bold d-flex align-items-center gap-2">
             {profile.name} {profile.surname}
-            <Button variant="outline-primary" size="sm" className="d-flex align-items-center gap-1">
+            <Button
+              variant="outline-primary"
+              size="sm"
+              className="d-flex align-items-center gap-1"
+            >
               <i className="bi bi-patch-check-fill"></i> bedge di verifica
             </Button>
           </h5>
@@ -82,21 +97,33 @@ const ProfileBlock = () => {
             <a href="#">collegamenti</a>
           </p>
           <div className="d-flex flex-wrap gap-2 my-3">
-            <button className="btn btn-primary rounded-pill fw-bold px-3 py-1">Disponibile per</button>
+            <button className="btn btn-primary rounded-pill fw-bold px-3 py-1">
+              Disponibile per
+            </button>
 
-            <button className="btn btn-outline-primary rounded-pill px-3 py-1">Aggiungi sezione del profilo</button>
+            <button className="btn btn-outline-primary rounded-pill px-3 py-1">
+              Aggiungi sezione del profilo
+            </button>
 
-            <button className="btn btn-outline-primary rounded-pill px-3 py-1">Migliora profilo</button>
+            <button className="btn btn-outline-primary rounded-pill px-3 py-1">
+              Migliora profilo
+            </button>
 
-            <button className="btn btn-outline-dark rounded-pill px-3 py-1">Risorse</button>
+            <button className="btn btn-outline-dark rounded-pill px-3 py-1">
+              Risorse
+            </button>
           </div>
           <Row className="g-3">
             <Col md={6}>
               <div className="bg-light p-3 rounded position-relative">
                 <strong className="d-block">Disponibile a lavorare</strong>
-                <span className="text-muted small">Ruoli di {profile.title}</span>
+                <span className="text-muted small">
+                  Ruoli di {profile.title}
+                </span>
                 <br />
-                <span className="text-primary small text-decoration-underline">Mostra dettagli</span>
+                <span className="text-primary small text-decoration-underline">
+                  Mostra dettagli
+                </span>
                 <i
                   className="bi bi-pencil position-absolute"
                   style={{
@@ -112,9 +139,12 @@ const ProfileBlock = () => {
             <Col md={6}>
               <div className="bg-light p-3 rounded">
                 <p className="mb-1 small">
-                  <strong>Fai sapere che stai facendo</strong> e attrai candidati qualificati
+                  <strong>Fai sapere che stai facendo</strong> e attrai
+                  candidati qualificati
                 </p>
-                <span className="text-primary small text-decoration-underline">Inizia</span>
+                <span className="text-primary small text-decoration-underline">
+                  Inizia
+                </span>
               </div>
             </Col>
           </Row>

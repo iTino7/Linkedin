@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { expAction, idAction } from "../redux/action";
 import PenIcon from "./svg/PenIcon";
 import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 
 function MyExperiencesInfo({ item, bigToggle, last }) {
   const dispatch = useDispatch();
@@ -15,7 +16,6 @@ function MyExperiencesInfo({ item, bigToggle, last }) {
     changeId();
     bigToggle();
   };
-  console.log(item);
   return (
     <Container fluid>
       <Row className={!last && "border-bottom "}>
@@ -29,19 +29,20 @@ function MyExperiencesInfo({ item, bigToggle, last }) {
                 <p className="mb-0 ">{item.role}</p>
                 <p className="mb-0">{item.company}</p>
                 <p className="mb-0">
-                  {item.startDate?.split("-")[0]} -
-                  {item.endDate ? item.endDate.split("-")[0] : "Presente"}
+                  {item.startDate?.split("-")[0]} -{item.endDate ? item.endDate.split("-")[0] : "Presente"}
                 </p>
                 <p className="mb-2">{item.area}</p>
                 <p className="fw-bold">{item.description}</p>
               </div>
             </div>
             {params.userId === "me" && (
-              <PenIcon
+              <div
                 onClick={() => {
                   handleClick();
                 }}
-              />
+              >
+                <PenIcon />
+              </div>
             )}
           </div>
         </Col>

@@ -9,18 +9,24 @@ function CreatePost() {
   return (
     <Card className="mb-3 shadow-sm">
       <Card.Body>
-        <Row className="align-items-start mb-3">
+        <Row className="align-items-start my-2">
           <Col xs="auto">
-            <Image src={profileImg} roundedCircle width={65} height={65} alt="Profilo" />
+            <Image
+              src={profileImg}
+              roundedCircle
+              width={65}
+              height={65}
+              alt="Profilo"
+            />
           </Col>
 
           <Col>
             <Form.Control
               as="textarea"
               placeholder="Crea un post"
-              rows={2}
-              className="rounded-pill px-3 py-2"
-              style={{ resize: "none" }}
+              rows={1}
+              className="rounded-pill px-3 py-2 my-2"
+              style={{ resize: "none", cursor: "pointer" }}
             />
           </Col>
         </Row>
@@ -28,7 +34,10 @@ function CreatePost() {
         <Row className="text-center me-3">
           <Col>
             <Button variant="light">
-              <i className="bi bi-camera-video me-2" style={{ color: "green" }}></i>
+              <i
+                className="bi bi-camera-video me-2"
+                style={{ color: "green" }}
+              ></i>
               Video
             </Button>
           </Col>
@@ -40,7 +49,10 @@ function CreatePost() {
           </Col>
           <Col>
             <Button variant="light">
-              <i className="bi bi-newspaper me-2" style={{ color: "orange" }}></i>
+              <i
+                className="bi bi-newspaper me-2"
+                style={{ color: "orange" }}
+              ></i>
               Scrivi un articolo
             </Button>
           </Col>

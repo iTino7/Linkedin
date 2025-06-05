@@ -1,7 +1,7 @@
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { expAction, idAction } from "../redux/action";
-import PenIcon from "./PenIcon";
+import PenIcon from "./svg/PenIcon";
 import { useParams } from "react-router-dom";
 
 function MyExperiencesInfo({ item, bigToggle, last }) {

@@ -26,6 +26,7 @@ export const profileAction = (token, profiles) => {
       if (resp.ok) {
         const data = await resp.json();
         dispatch({ type: SET_PROFILE, payload: data });
+        profiles === "me" && localStorage.setItem("me", JSON.stringify(data));
       }
     } catch (error) {
       console.log(error);

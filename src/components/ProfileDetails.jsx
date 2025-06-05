@@ -5,10 +5,9 @@ import InfoBlock from "./InfoBlock";
 import Aside from "./Aside";
 import { useDispatch, useSelector } from "react-redux";
 import { notScrollAction, profileAction } from "../redux/action";
-import Chat from "./Chat";
 import { PlusCircleFill } from "react-bootstrap-icons";
 import MyModals from "./MyModals";
-import AddFriend from "./AddFriend";
+import AddFriend from "./svg/AddFriend";
 
 function ProfileDetails() {
   const TOKEN =
@@ -65,18 +64,20 @@ function ProfileDetails() {
                     }}
                   />
 
-                  <div
-                    className="bg-white border rounded-circle p-1"
-                    style={{
-                      position: "absolute",
-                      right: "-5px",
-                      bottom: "-5px",
-                      fontSize: "1rem",
-                      color: "#0d6efd",
-                    }}
-                  >
-                    {params.userId === "me" && <PlusCircleFill style={{ cursor: "pointer" }} onClick={() => bigToggle()} />}{" "}
-                  </div>
+                  {params.userId === "me" && (
+                    <div
+                      className="bg-white border rounded-circle p-1"
+                      style={{
+                        position: "absolute",
+                        right: "-5px",
+                        bottom: "-5px",
+                        fontSize: "1rem",
+                        color: "#0d6efd",
+                      }}
+                    >
+                      <PlusCircleFill style={{ cursor: "pointer" }} onClick={() => bigToggle()} />
+                    </div>
+                  )}
                 </div>
               </div>
               <Card.Body className="pt-5">
@@ -150,7 +151,6 @@ function ProfileDetails() {
             <Aside />
           </Col>
         </Row>
-        <Chat />
       </Container>
     </>
   );

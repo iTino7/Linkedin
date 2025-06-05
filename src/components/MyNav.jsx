@@ -1,10 +1,16 @@
-import { Col, Container, Form, Nav, Navbar, NavDropdown, Row } from "react-bootstrap";
-import { BellFill, BriefcaseFill, ChatDotsFill, HouseDoorFill, PeopleFill, PersonFill, Grid3x3GapFill } from "react-bootstrap-icons"; // Importata Grid3x3GapFill per l'icona "Per le aziende"
+import { Button, Col, Container, Dropdown, Form, Nav, Navbar, NavDropdown, Row } from "react-bootstrap";
+import { Grid3x3GapFill } from "react-bootstrap-icons"; // Importata Grid3x3GapFill per l'icona "Per le aziende"
 import { Link } from "react-router-dom";
+import HouseLink from "./svg/HouseLink";
+import ReteSvg from "./svg/ReteSvg";
+import LavoroSvg from "./svg/LavoroSvg";
+import MessSvg from "./svg/MessSvg";
+import NotySvg from "./svg/NotySvg";
+import AziendeSvg from "./svg/AziendeSvg";
 
-function MyNav() {
+function MyNav({ me }) {
   return (
-    <Navbar expand="lg" className="bg-white py-1 border-bottom sticky-top" style={{ zIndex: "1" }}>
+    <Navbar expand="lg" className="bg-white py-1 border-bottom sticky-top " style={{ zIndex: "1" }}>
       <Container className="d-flex align-items-center justify-content-between">
         <div className="d-flex align-items-center">
           <img
@@ -29,54 +35,83 @@ function MyNav() {
             </Row>
           </Form>
         </div>
-        <Nav className="mx-auto d-flex flex-row align-items-center text-center">
-          <Nav.Link href="#" className="d-flex flex-column align-items-center mx-2 text-decoration-none text-dark">
-            <HouseDoorFill size={20} />
+        <Nav className="ms-auto d-flex flex-row align-items-center text-center gap-2">
+          <Link to={"/"} className="nav-link d-flex flex-column align-items-center mx-2 py-0 text-decoration-none text-dark">
+            <HouseLink />
             <span style={{ fontSize: "0.75rem" }}>Home</span>
-          </Nav.Link>
-          <Nav.Link href="#" className="d-flex flex-column align-items-center mx-2 text-decoration-none text-dark">
-            <PeopleFill size={20} />
+          </Link>
+
+          <Nav.Link href="#" className="d-flex flex-column align-items-center mx-2 py-0 text-decoration-none text-dark">
+            <ReteSvg />
             <span style={{ fontSize: "0.75rem" }}>Rete</span>
           </Nav.Link>
-          <Nav.Link href="#" className="d-flex flex-column align-items-center mx-2 text-decoration-none text-dark">
-            <BriefcaseFill size={20} />
+          <Nav.Link href="#" className="d-flex flex-column align-items-center mx-2 py-0 text-decoration-none text-dark">
+            <LavoroSvg />
             <span style={{ fontSize: "0.75rem" }}>Lavoro</span>
           </Nav.Link>
-          <Nav.Link href="#" className="d-flex flex-column align-items-center mx-2 text-decoration-none text-dark">
-            <ChatDotsFill size={20} />
+          <Nav.Link href="#" className="d-flex flex-column align-items-center mx-2 py-0 text-decoration-none text-dark">
+            <MessSvg />
             <span style={{ fontSize: "0.75rem" }}>Messaggistica</span>
           </Nav.Link>
-          <Nav.Link href="#" className="d-flex flex-column align-items-center mx-2 text-decoration-none text-dark">
-            <BellFill size={20} />
+          <Nav.Link href="#" className="d-flex flex-column align-items-center mx-2 py-0 text-decoration-none text-dark">
+            <NotySvg />
             <span style={{ fontSize: "0.75rem" }}>Notifiche</span>
           </Nav.Link>
-          <NavDropdown
-            title={
-              <div className="d-flex flex-column align-items-center text-dark">
-                <PersonFill size={20} />
-                <span style={{ fontSize: "0.75rem" }}>Tu</span>
+          <Dropdown>
+            <Dropdown.Toggle variant="none" id="dropdown-basic">
+              <div>
+                <img src={me.image} width={24} className="rounded-circle mb-n" />
               </div>
-            }
-            id="basic-nav-dropdown"
-            className="mx-2"
-          >
-            <Link to={"/profile/me"} className=" dropdown-item">
-              Visualizza profilo
-            </Link>
-            <NavDropdown.Divider />
-            <NavDropdown.Item href="#action/3.2">Impostazioni e privacy</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.3">Aiuto</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.4">Lingua</NavDropdown.Item>
-            <NavDropdown.Divider />
-            <NavDropdown.Item href="#action/3.5">Gestisci</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.6">Post e attività</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.7">Account per la pubblicità</NavDropdown.Item>
-            <NavDropdown.Divider />
-            <NavDropdown.Item href="#action/3.8">Esci</NavDropdown.Item>
-          </NavDropdown>
+              <span className="fs7"> Tu</span>
+            </Dropdown.Toggle>
+
+            <Dropdown.Menu className="drop-tu">
+              <div className="border-bottom pb-2">
+                <div className="d-flex px-3 gap-2">
+                  <div>
+                    <img src={me.image} alt="" width={56} className="rounded-circle" />
+                  </div>
+                  <div>
+                    <h5 className="mb-0">
+                      {me.name} {me.surname}
+                    </h5>
+                    <p className="mb-0  p-0  fs7">{me.title}</p>
+                    <p className="mb-0 p-0  fs7">{me.area}</p>
+                  </div>
+                </div>
+                <Link to={"/profile/me"} className=" dropdown-item">
+                  <Button>Visualizza profilo</Button>
+                </Link>
+              </div>
+              <h5 className="px-3 mt-2">Account</h5>
+              <NavDropdown.Item>Impostazioni e privacy</NavDropdown.Item>
+              <NavDropdown.Item>Aiuto</NavDropdown.Item>
+              <NavDropdown.Item>Lingua</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <h5 className="px-3">Gestisci</h5>
+              <NavDropdown.Item>Post e attività</NavDropdown.Item>
+              <NavDropdown.Item>Account per la pubblicità</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item>Esci</NavDropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
         </Nav>
-        <Nav className="d-flex flex-row align-items-center text-center ms-auto">
-          <NavDropdown
+        <Nav className="d-flex flex-row align-items-center text-center me-auto ">
+          <Dropdown>
+            <Dropdown.Toggle variant="none" id="dropdown-azienda" className="border-start">
+              <div className="mb-n">
+                <AziendeSvg />
+              </div>
+              <span className="fs7"> Per le aziende</span>
+            </Dropdown.Toggle>
+
+            <Dropdown.Menu>
+              <NavDropdown.Item>Crea una pagina aziendale</NavDropdown.Item>
+              <NavDropdown.Item>Pubblicizza</NavDropdown.Item>
+              <NavDropdown.Item>Trova contatti</NavDropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+          {/* <NavDropdown
             title={
               <div className="d-flex flex-column align-items-center text-dark border-start ps-3 me-3">
                 <Grid3x3GapFill size={20} />
@@ -89,7 +124,7 @@ function MyNav() {
             <NavDropdown.Item href="#action/4.1">Crea una pagina aziendale</NavDropdown.Item>
             <NavDropdown.Item href="#action/4.2">Pubblicizza</NavDropdown.Item>
             <NavDropdown.Item href="#action/4.3">Trova contatti</NavDropdown.Item>
-          </NavDropdown>
+          </NavDropdown> */}
         </Nav>
       </Container>
     </Navbar>

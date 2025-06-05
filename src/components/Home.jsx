@@ -1,13 +1,15 @@
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Row, Spinner } from "react-bootstrap";
 import InfoBlock from "./InfoBlock";
 import ProfileBlock from "./ProfileBlock";
 import Aside from "./Aside";
 import CreatePost from "./CreaPost";
 import HomePost from "./HomePost";
 import { useEffect, useState } from "react";
+import { TypeH1 } from "react-bootstrap-icons";
 
 const Home = () => {
   const [post, setPost] = useState([]);
+  const [loading, setloading] = useState(true);
 
   const postFetch = async () => {
     try {
@@ -24,11 +26,14 @@ const Home = () => {
       if (resp.ok) {
         const data = await resp.json();
         setPost(data);
+        setloading(true);
       } else {
         throw new Error("errore nella fetch");
       }
     } catch (error) {
       console.log(error);
+    } finally {
+      setloading(false);
     }
   };
 
@@ -48,9 +53,15 @@ const Home = () => {
         <Col className="p-4" xs={6}>
           <div className="h-100">
             <CreatePost />
-            {post.slice(-15).map((item, index) => (
-              <HomePost key={index} item={item} />
-            ))}
+            {loading ? (
+              <div className="text-center mt-5">
+                <Spinner animation="grow" variant="info" />
+              </div>
+            ) : (
+              post
+                .slice(-15)
+                .map((item, index) => <HomePost key={index} item={item} />)
+            )}
           </div>
         </Col>
         <Col xs={3}>

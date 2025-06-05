@@ -7,14 +7,14 @@ function AnalysesInfo() {
     <>
       <Container fluid className="border-bottom ">
         <Row>
-          <Col xs={12} sm={5} md={3} className="d-flex">
+          <Col xs={12} lg={5} className="d-flex">
             <PeopleFill className="fs-3" />
             <div className="d-flex ms-2 flex-column">
-              <p className="mb-0 fw-bold"> 0 visualizzazioni del profilo</p>
+              <p className="mb-0 fw-bold fs-md-6"> 0 visualizzazioni del profilo</p>
               <p>Aggiorna il tuo profilo per attrarre visitatori.</p>
             </div>
           </Col>
-          <Col xs={12} sm={5} md={3} className="d-flex">
+          <Col xs={12} lg={3} className="d-flex">
             <BarChartLineFill className="fs-3" />
             <div className="d-flex ms-2 flex-column">
               <p className="mb-0 fw-bold">0 impressioni del post</p>

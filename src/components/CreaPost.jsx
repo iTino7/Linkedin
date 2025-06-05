@@ -2,7 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState } from "react";
 import { Card, Form, Button, Row, Col, Image } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import CreatePostModal from "./CreatePostModal"; // importa il componente modale
+import CreatePostModal from "./CreatePostModal";
 
 function CreatePost() {
   const profileImg = useSelector((state) => state.profile.user.image);

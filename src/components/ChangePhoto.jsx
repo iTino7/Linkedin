@@ -7,7 +7,7 @@ function ChangePhoto({ img, submit }) {
       <Form.Label></Form.Label>
       <Form.Control type="file" onChange={img} />
       <Button variant="primary" type="submit" onClick={submit}>
-        Submit
+        Submit 
       </Button>
     </Form.Group>
   );

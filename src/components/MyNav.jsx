@@ -1,10 +1,30 @@
-import { Col, Container, Form, Nav, Navbar, NavDropdown, Row } from "react-bootstrap";
-import { BellFill, BriefcaseFill, ChatDotsFill, HouseDoorFill, PeopleFill, PersonFill, Grid3x3GapFill } from "react-bootstrap-icons"; // Importata Grid3x3GapFill per l'icona "Per le aziende"
-import { Link } from "react-router-dom";
+import {
+  Col,
+  Container,
+  Form,
+  Nav,
+  Navbar,
+  NavDropdown,
+  Row,
+} from "react-bootstrap";
+import {
+  BellFill,
+  BriefcaseFill,
+  ChatDotsFill,
+  HouseDoorFill,
+  PeopleFill,
+  PersonFill,
+  Grid3x3GapFill,
+} from "react-bootstrap-icons"; // Importata Grid3x3GapFill per l'icona "Per le aziende"
+import { Link, NavLink } from "react-router-dom";
 
 function MyNav() {
   return (
-    <Navbar expand="lg" className="bg-white py-1 border-bottom sticky-top" style={{ zIndex: "1" }}>
+    <Navbar
+      expand="lg"
+      className="bg-white py-1 border-bottom sticky-top"
+      style={{ zIndex: "1" }}
+    >
       <Container className="d-flex align-items-center justify-content-between">
         <div className="d-flex align-items-center">
           <img
@@ -30,26 +50,41 @@ function MyNav() {
           </Form>
         </div>
         <Nav className="mx-auto d-flex flex-row align-items-center text-center">
-          <Nav.Link href="#" className="d-flex flex-column align-items-center mx-2 text-decoration-none text-dark">
+          <NavLink
+            to={"/"}
+            className="d-flex nav-link flex-column align-items-center mx-2 text-decoration-none text-dark"
+          >
             <HouseDoorFill size={20} />
             <span style={{ fontSize: "0.75rem" }}>Home</span>
-          </Nav.Link>
-          <Nav.Link href="#" className="d-flex flex-column align-items-center mx-2 text-decoration-none text-dark">
+          </NavLink>
+          <NavLink
+            to={"/"}
+            className="d-flex nav-link flex-column align-items-center mx-2 text-decoration-none text-dark"
+          >
             <PeopleFill size={20} />
             <span style={{ fontSize: "0.75rem" }}>Rete</span>
-          </Nav.Link>
-          <Nav.Link href="#" className="d-flex flex-column align-items-center mx-2 text-decoration-none text-dark">
+          </NavLink>
+          <NavLink
+            to={"/"}
+            className="d-flex nav-link flex-column align-items-center mx-2 text-decoration-none text-dark"
+          >
             <BriefcaseFill size={20} />
             <span style={{ fontSize: "0.75rem" }}>Lavoro</span>
-          </Nav.Link>
-          <Nav.Link href="#" className="d-flex flex-column align-items-center mx-2 text-decoration-none text-dark">
+          </NavLink>
+          <NavLink
+            to={"/"}
+            className="d-flex nav-link flex-column align-items-center mx-2 text-decoration-none text-dark"
+          >
             <ChatDotsFill size={20} />
             <span style={{ fontSize: "0.75rem" }}>Messaggistica</span>
-          </Nav.Link>
-          <Nav.Link href="#" className="d-flex flex-column align-items-center mx-2 text-decoration-none text-dark">
+          </NavLink>
+          <NavLink
+            to={"/"}
+            className="d-flex nav-link flex-column align-items-center mx-2 text-decoration-none text-dark"
+          >
             <BellFill size={20} />
             <span style={{ fontSize: "0.75rem" }}>Notifiche</span>
-          </Nav.Link>
+          </NavLink>
           <NavDropdown
             title={
               <div className="d-flex flex-column align-items-center text-dark">
@@ -64,13 +99,19 @@ function MyNav() {
               Visualizza profilo
             </Link>
             <NavDropdown.Divider />
-            <NavDropdown.Item href="#action/3.2">Impostazioni e privacy</NavDropdown.Item>
+            <NavDropdown.Item href="#action/3.2">
+              Impostazioni e privacy
+            </NavDropdown.Item>
             <NavDropdown.Item href="#action/3.3">Aiuto</NavDropdown.Item>
             <NavDropdown.Item href="#action/3.4">Lingua</NavDropdown.Item>
             <NavDropdown.Divider />
             <NavDropdown.Item href="#action/3.5">Gestisci</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.6">Post e attività</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.7">Account per la pubblicità</NavDropdown.Item>
+            <NavDropdown.Item href="#action/3.6">
+              Post e attività
+            </NavDropdown.Item>
+            <NavDropdown.Item href="#action/3.7">
+              Account per la pubblicità
+            </NavDropdown.Item>
             <NavDropdown.Divider />
             <NavDropdown.Item href="#action/3.8">Esci</NavDropdown.Item>
           </NavDropdown>
@@ -86,9 +127,13 @@ function MyNav() {
             id="company-nav-dropdown"
             className="mx-2"
           >
-            <NavDropdown.Item href="#action/4.1">Crea una pagina aziendale</NavDropdown.Item>
+            <NavDropdown.Item href="#action/4.1">
+              Crea una pagina aziendale
+            </NavDropdown.Item>
             <NavDropdown.Item href="#action/4.2">Pubblicizza</NavDropdown.Item>
-            <NavDropdown.Item href="#action/4.3">Trova contatti</NavDropdown.Item>
+            <NavDropdown.Item href="#action/4.3">
+              Trova contatti
+            </NavDropdown.Item>
           </NavDropdown>
         </Nav>
       </Container>

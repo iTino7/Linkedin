@@ -19,7 +19,7 @@ function MyExperiencesInfo({ item, bigToggle, last }) {
   return (
     <Container fluid>
       <Row className={!last && "border-bottom "}>
-        <Col xs={12} sm={5} md={3} className="w-100 mt-3 ">
+        <Col xs={12} sm={5} md={3} className="w-100 mt-3">
           <div className="d-flex justify-content-between">
             <div className="d-flex gap-2">
               <div>

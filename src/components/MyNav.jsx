@@ -1,4 +1,14 @@
-import { Button, Col, Container, Dropdown, Form, Nav, Navbar, NavDropdown, Row } from "react-bootstrap";
+import {
+  Button,
+  Col,
+  Container,
+  Dropdown,
+  Form,
+  Nav,
+  Navbar,
+  NavDropdown,
+  Row,
+} from "react-bootstrap";
 import { Grid3x3GapFill } from "react-bootstrap-icons"; // Importata Grid3x3GapFill per l'icona "Per le aziende"
 import { Link } from "react-router-dom";
 import HouseLink from "./svg/HouseLink";
@@ -7,10 +17,28 @@ import LavoroSvg from "./svg/LavoroSvg";
 import MessSvg from "./svg/MessSvg";
 import NotySvg from "./svg/NotySvg";
 import AziendeSvg from "./svg/AziendeSvg";
+import { useDispatch } from "react-redux";
+import { profileAction } from "../redux/action";
+import { useEffect } from "react";
 
-function MyNav({ me }) {
+function MyNav() {
+  const dispatch = useDispatch();
+  const me = JSON.parse(localStorage.getItem("me"));
+  const TOKEN =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODNlYjBiM2IxMGJmMDAwMTVjZjIyYTQiLCJpYXQiOjE3NDg5Mzg5MzEsImV4cCI6MTc1MDE0ODUzMX0.x7bYpZXsMIBHVOtE_a-UyTnY_qWaBm7IsdvFovn6KL0";
+
+  useEffect(() => {
+    dispatch(profileAction(TOKEN, "me"));
+    console.log("ciao");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
-    <Navbar expand="lg" className="bg-white py-1 border-bottom sticky-top " style={{ zIndex: "1" }}>
+    <Navbar
+      expand="lg"
+      className="bg-white py-1 border-bottom sticky-top "
+      style={{ zIndex: "1" }}
+    >
       <Container className="d-flex align-items-center justify-content-between">
         <div className="d-flex align-items-center">
           <img
@@ -36,31 +64,50 @@ function MyNav({ me }) {
           </Form>
         </div>
         <Nav className="ms-auto d-flex flex-row align-items-center text-center gap-2">
-          <Link to={"/"} className="nav-link d-flex flex-column align-items-center mx-2 py-0 text-decoration-none text-dark">
+          <Link
+            to={"/"}
+            className="nav-link d-flex flex-column align-items-center mx-2 py-0 text-decoration-none text-dark"
+          >
             <HouseLink />
             <span style={{ fontSize: "0.75rem" }}>Home</span>
           </Link>
 
-          <Nav.Link href="#" className="d-flex flex-column align-items-center mx-2 py-0 text-decoration-none text-dark">
+          <Nav.Link
+            href="#"
+            className="d-flex flex-column align-items-center mx-2 py-0 text-decoration-none text-dark"
+          >
             <ReteSvg />
             <span style={{ fontSize: "0.75rem" }}>Rete</span>
           </Nav.Link>
-          <Nav.Link href="#" className="d-flex flex-column align-items-center mx-2 py-0 text-decoration-none text-dark">
+          <Nav.Link
+            href="#"
+            className="d-flex flex-column align-items-center mx-2 py-0 text-decoration-none text-dark"
+          >
             <LavoroSvg />
             <span style={{ fontSize: "0.75rem" }}>Lavoro</span>
           </Nav.Link>
-          <Nav.Link href="#" className="d-flex flex-column align-items-center mx-2 py-0 text-decoration-none text-dark">
+          <Nav.Link
+            href="#"
+            className="d-flex flex-column align-items-center mx-2 py-0 text-decoration-none text-dark"
+          >
             <MessSvg />
             <span style={{ fontSize: "0.75rem" }}>Messaggistica</span>
           </Nav.Link>
-          <Nav.Link href="#" className="d-flex flex-column align-items-center mx-2 py-0 text-decoration-none text-dark">
+          <Nav.Link
+            href="#"
+            className="d-flex flex-column align-items-center mx-2 py-0 text-decoration-none text-dark"
+          >
             <NotySvg />
             <span style={{ fontSize: "0.75rem" }}>Notifiche</span>
           </Nav.Link>
           <Dropdown>
             <Dropdown.Toggle variant="none" id="dropdown-basic">
               <div>
-                <img src={me.image} width={24} className="rounded-circle mb-n" />
+                <img
+                  src={me?.image}
+                  width={24}
+                  className="rounded-circle mb-n"
+                />
               </div>
               <span className="fs7"> Tu</span>
             </Dropdown.Toggle>
@@ -69,14 +116,19 @@ function MyNav({ me }) {
               <div className="border-bottom pb-2">
                 <div className="d-flex px-3 gap-2">
                   <div>
-                    <img src={me.image} alt="" width={56} className="rounded-circle" />
+                    <img
+                      src={me?.image}
+                      alt=""
+                      width={56}
+                      className="rounded-circle"
+                    />
                   </div>
                   <div>
                     <h5 className="mb-0">
-                      {me.name} {me.surname}
+                      {me?.name} {me?.surname}
                     </h5>
-                    <p className="mb-0  p-0  fs7">{me.title}</p>
-                    <p className="mb-0 p-0  fs7">{me.area}</p>
+                    <p className="mb-0  p-0  fs7">{me?.title}</p>
+                    <p className="mb-0 p-0  fs7">{me?.area}</p>
                   </div>
                 </div>
                 <Link to={"/profile/me"} className=" dropdown-item">
@@ -98,7 +150,11 @@ function MyNav({ me }) {
         </Nav>
         <Nav className="d-flex flex-row align-items-center text-center me-auto ">
           <Dropdown>
-            <Dropdown.Toggle variant="none" id="dropdown-azienda" className="border-start">
+            <Dropdown.Toggle
+              variant="none"
+              id="dropdown-azienda"
+              className="border-start"
+            >
               <div className="mb-n">
                 <AziendeSvg />
               </div>

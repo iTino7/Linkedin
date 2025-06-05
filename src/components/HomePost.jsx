@@ -1,9 +1,17 @@
 import { Col, Container, Row } from "react-bootstrap";
 
 import DeletePost from "./deletePost";
+import PenIcon from "./svg/PenIcon";
+import { useState } from "react";
+import PutModal from "./PutModal";
 
 function HomePost({ item, getFetch }) {
   const myId = "683eb0b3b10bf00015cf22a4";
+
+  const [open, setOpen] = useState(false);
+
+  const close = () => setOpen(false);
+  const openModal = () => setOpen(true);
 
   const deleteFetch = async (getFetch) => {
     try {
@@ -36,9 +44,16 @@ function HomePost({ item, getFetch }) {
             {item.user.title}
 
             {item.user._id === myId && (
-              <div onClick={() => deleteFetch(getFetch)}>
-                <DeletePost />
-              </div>
+              <>
+                <div className="d-flex gap-2 align-items-top">
+                  <div onClick={() => openModal()}>
+                    <PenIcon />
+                  </div>
+                  <div onClick={() => deleteFetch(getFetch)}>
+                    <DeletePost />
+                  </div>
+                </div>
+              </>
             )}
           </h1>
           <Col className="d-flex align-items-center">
@@ -57,6 +72,7 @@ function HomePost({ item, getFetch }) {
           </Col>
         </Row>
       </Container>
+      <PutModal open={open} close={close} item={item} getFetch={getFetch} />
     </div>
   );
 }

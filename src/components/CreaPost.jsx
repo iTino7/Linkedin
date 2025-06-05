@@ -14,7 +14,7 @@ function CreatePost() {
           style={{ resize: "none" }}
         />
 
-        <Row className="mt-3 text-center">
+        <Row className="mt-3 text-center me-3">
           <Col>
             <Button variant="light">
               <i className="bi bi-camera-video me-2" style={{ color: "green" }}></i>

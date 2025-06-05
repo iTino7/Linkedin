@@ -1,5 +1,5 @@
 import { Button } from "react-bootstrap";
-import AddFriend from "./AddFriend";
+import AddFriend from "./svg/AddFriend";
 import { useNavigate } from "react-router-dom";
 import { Last } from "react-bootstrap/esm/PageItem";
 

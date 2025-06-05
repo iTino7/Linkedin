@@ -5,12 +5,33 @@ svg {
   width: 20px;
   cursor: pointer;
 }
+.navbar {
+  height: 53px;
+}
+.show:hover {
+  background: "";
+}
+.navbar svg {
+  width: 27px !important;
+  fill: #666666;
+}
+.navbar svg:hover {
+  fill: black;
+}
+.navbar button {
+  border: none;
+  background-color: none;
+}
+.navbar button:hover {
+  border: none;
+  background-color: none;
+}
 .pen-icon {
   top: -15px;
 }
-.show:hover {
+/* .show:hover {
   background-color: lightgray;
-}
+} */
 .btn-outline-dark {
   --bs-btn-hover-bg: lightgray !important;
   --bs-btn-hover-color: black !important;
@@ -35,4 +56,14 @@ svg {
 }
 .add-coll {
   fill: white !important;
+}
+.drop-tu {
+  transform: translate(-195px, 3px);
+  width: 265px;
+}
+.fs7 {
+  font-size: 12px;
+}
+.mb-n {
+  margin-bottom: -5px;
 }

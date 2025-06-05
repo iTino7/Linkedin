@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button, Container } from "react-bootstrap";
 import SinglePerson from "./SinglePerson";
-import PenIcon from "./PenIcon";
+import PenIcon from "./svg/PenIcon";
 import { useDispatch, useSelector } from "react-redux";
 import { XLg } from "react-bootstrap-icons";
 import { notScrollAction } from "../redux/action";

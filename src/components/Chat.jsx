@@ -1,7 +1,4 @@
-import { useSelector } from "react-redux";
-
-const Chat = () => {
-  const me = useSelector((state) => state.profile.user);
+const Chat = ({ me }) => {
   return (
     <div className="d-flex bg-white fixed-bottom border rounded-2 align-items-center shadow ms-auto me-1 p-3" style={{ width: 300 }}>
       <img src={me.image} alt="" className="rounded-circle " width={20} height={20} />

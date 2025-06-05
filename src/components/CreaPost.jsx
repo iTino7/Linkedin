@@ -25,7 +25,6 @@ function CreatePost({ getFetch }) {
                 alt="Profilo"
               />
             </Col>
-
             <Col>
               <Form.Control
                 as="textarea"

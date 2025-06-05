@@ -1,4 +1,3 @@
-import React from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 
 function CustomForm() {
@@ -6,9 +5,9 @@ function CustomForm() {
     <>
       <Container fluid className="border rounded ">
         <Row>
-          <Col className="p-0 d-flex align-items-center m-3">
+          <Col className="p-0 d-flex flex-column flex-lg-row align-items-center m-3">
             <img src="/public/imageBlock.svg" />
-            <h5 className="mb-0 ms-2">
+            <h5 className="mb-0 ms-md-2 fs-6">
               Scrivi un riepilogo per mettere in evidenza la tua personalità o
               la tua esperienza lavorativa
             </h5>
@@ -19,7 +18,10 @@ function CustomForm() {
             Gli utenti che includono un riepilogo ricevono fino a 3,9 volte più
             visualizzazioni del profilo.
           </p>
-          <Button variant="transparent" className="border border-black mb-3 rounded-5 d-flex">
+          <Button
+            variant="transparent"
+            className="border border-black mb-3 rounded-5 d-flex"
+          >
             <p className="mb-1 fw-bold">Aggiungi un riepilogo</p>
           </Button>
         </Col>

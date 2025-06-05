@@ -5,7 +5,6 @@ import Aside from "./Aside";
 import CreatePost from "./CreaPost";
 import HomePost from "./HomePost";
 import { useEffect, useState } from "react";
-import { TypeH1 } from "react-bootstrap-icons";
 
 const Home = () => {
   const [post, setPost] = useState([]);
@@ -52,7 +51,7 @@ const Home = () => {
         </Col>
         <Col className="p-4" xs={6}>
           <div className="h-100">
-            <CreatePost />
+            <CreatePost getFetch={postFetch} />
             {loading ? (
               <div className="text-center mt-5">
                 <Spinner animation="grow" variant="info" />
@@ -60,7 +59,10 @@ const Home = () => {
             ) : (
               post
                 .slice(-15)
-                .map((item, index) => <HomePost key={index} item={item} />)
+                .reverse()
+                .map((item, index) => (
+                  <HomePost getFetch={postFetch} key={index} item={item} />
+                ))
             )}
           </div>
         </Col>

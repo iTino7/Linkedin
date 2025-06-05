@@ -4,7 +4,7 @@ import { Card, Form, Button, Row, Col, Image } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import CreatePostModal from "./CreatePostModal";
 
-function CreatePost() {
+function CreatePost({ getFetch }) {
   const profileImg = useSelector((state) => state.profile.user.image);
   const [open, setOpen] = useState(false);
 
@@ -17,7 +17,13 @@ function CreatePost() {
         <Card.Body>
           <Row className="align-items-start mb-3">
             <Col xs="auto">
-              <Image src={profileImg} roundedCircle width={65} height={65} alt="Profilo" />
+              <Image
+                src={profileImg}
+                roundedCircle
+                width={65}
+                height={65}
+                alt="Profilo"
+              />
             </Col>
 
             <Col>
@@ -36,7 +42,10 @@ function CreatePost() {
           <Row className="text-center me-3">
             <Col>
               <Button variant="light">
-                <i className="bi bi-camera-video me-2" style={{ color: "green" }}></i>
+                <i
+                  className="bi bi-camera-video me-2"
+                  style={{ color: "green" }}
+                ></i>
                 Video
               </Button>
             </Col>
@@ -48,7 +57,10 @@ function CreatePost() {
             </Col>
             <Col>
               <Button variant="light">
-                <i className="bi bi-newspaper me-2" style={{ color: "orange" }}></i>
+                <i
+                  className="bi bi-newspaper me-2"
+                  style={{ color: "orange" }}
+                ></i>
                 Scrivi un articolo
               </Button>
             </Col>
@@ -56,7 +68,7 @@ function CreatePost() {
         </Card.Body>
       </Card>
 
-      <CreatePostModal open={open} close={close} />
+      <CreatePostModal getFetch={getFetch} open={open} close={close} />
     </>
   );
 }

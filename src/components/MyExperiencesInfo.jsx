@@ -29,7 +29,8 @@ function MyExperiencesInfo({ item, bigToggle, last }) {
                 <p className="mb-0 ">{item.role}</p>
                 <p className="mb-0">{item.company}</p>
                 <p className="mb-0">
-                  {item.startDate?.split("-")[0]} - {item.endDate ? item.endDate.split("-")[0] : "Presente"}
+                  {item.startDate?.split("-")[0]} -
+                  {item.endDate ? item.endDate.split("-")[0] : "Presente"}
                 </p>
                 <p className="mb-2">{item.area}</p>
                 <p className="fw-bold">{item.description}</p>

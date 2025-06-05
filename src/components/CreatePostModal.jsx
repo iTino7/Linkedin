@@ -1,9 +1,14 @@
-import React from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 
 function CreatePostModal({ open, close }) {
   return (
-    <Modal show={open} onHide={close} centered size="lg">
+    <Modal
+      className="bg-transparent"
+      show={open}
+      onHide={close}
+      centered
+      size="lg"
+    >
       <Modal.Header closeButton>
         <Modal.Title>Crea un post</Modal.Title>
       </Modal.Header>

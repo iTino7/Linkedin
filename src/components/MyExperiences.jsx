@@ -14,12 +14,17 @@ function MyExperiences({ bigToggle }) {
   const dispatch = useDispatch();
   const infoFetch = async () => {
     try {
-      const resp = await fetch(` https://striveschool-api.herokuapp.com/api/profile/${idP === "me" || !idP ? "681479fc1c250400151ab652" : idP}/experiences`, {
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODE0NzlmYzFjMjUwNDAwMTUxYWI2NTIiLCJpYXQiOjE3NDkwMjIxODQsImV4cCI6MTc1MDIzMTc4NH0.7Szsao5jVpzG3jKFYe1rXQQEQaQboxVSvHLIzlnp8Ew",
-        },
-      });
+      const resp = await fetch(
+        ` https://striveschool-api.herokuapp.com/api/profile/${
+          idP === "me" || !idP ? "681479fc1c250400151ab652" : idP
+        }/experiences`,
+        {
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODE0NzlmYzFjMjUwNDAwMTUxYWI2NTIiLCJpYXQiOjE3NDkwMjIxODQsImV4cCI6MTc1MDIzMTc4NH0.7Szsao5jVpzG3jKFYe1rXQQEQaQboxVSvHLIzlnp8Ew",
+          },
+        }
+      );
 
       if (resp.ok) {
         const data = await resp.json();
@@ -51,7 +56,12 @@ function MyExperiences({ bigToggle }) {
             </div>
             <Col xs={12} className="px-0">
               {info.map((item, index) => (
-                <MyExperiencesInfo key={index} item={item} bigToggle={bigToggle} last={index === info.length - 1 && true} />
+                <MyExperiencesInfo
+                  key={index}
+                  item={item}
+                  bigToggle={bigToggle}
+                  last={index === info.length - 1 && true}
+                />
               ))}
             </Col>
           </Row>

@@ -1,32 +1,30 @@
 import { Button, Container, Form } from "react-bootstrap";
 import { XLg } from "react-bootstrap-icons";
 import { useDispatch } from "react-redux";
-import { expAction, imgAction, SET_IMG } from "../redux/action";
-import { useNavigate } from "react-router-dom";
+import { expAction, imgAction, profileAction, SET_IMG } from "../redux/action";
 import ChangePhoto from "./ChangePhoto";
 import ModalExperiences from "./ModalExperiences";
+import { useState } from "react";
 
 function MyModals({ big, bigToggle, exp }) {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [filImg, setFilImg] = useState(null);
 
   const handleClick = () => {
     dispatch(expAction(false));
     bigToggle();
+    setFilImg(null);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate(`/profile/me`);
+    imageFetch(filImg);
   };
 
   const TOKEN =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODNlYjBiM2IxMGJmMDAwMTVjZjIyYTQiLCJpYXQiOjE3NDg5Mzg5MzEsImV4cCI6MTc1MDE0ODUzMX0.x7bYpZXsMIBHVOtE_a-UyTnY_qWaBm7IsdvFovn6KL0";
 
   const handleImage = (e) => {
-    if (e.target.files[0]) {
-      imageFetch(e.target.files[0]);
-      dispatch(imgAction(e.target.files[0].lastModified));
-    }
+    e.target.files[0] && setFilImg(e.target.files[0]);
   };
 
   const imageFetch = async (file) => {
@@ -50,6 +48,9 @@ function MyModals({ big, bigToggle, exp }) {
       }
     } catch (error) {
       console.log(error);
+    } finally {
+      dispatch(profileAction(TOKEN, "me"));
+      bigToggle();
     }
   };
 
@@ -64,7 +65,7 @@ function MyModals({ big, bigToggle, exp }) {
                 <XLg className="ms-auto" onClick={() => handleClick()} />
               </div>
 
-              <div className=" px-5 ">{exp ? <ModalExperiences /> : <ChangePhoto img={handleImage} submit={handleSubmit} />}</div>
+              <div className=" px-5 ">{exp ? <ModalExperiences /> : <ChangePhoto img={handleImage} submit={handleSubmit} prew={filImg} />}</div>
             </div>
           </Container>
         </div>

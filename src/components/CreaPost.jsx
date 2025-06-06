@@ -13,19 +13,13 @@ function CreatePost({ getFetch }) {
 
   return (
     <>
-      <Card className="mb-3 shadow-sm">
+      <Card className="my-3  shadow-sm">
         <Card.Body>
           <Row className="align-items-start mb-3">
             <Col xs="auto">
-              <Image
-                src={profileImg}
-                roundedCircle
-                width={65}
-                height={65}
-                alt="Profilo"
-              />
+              <Image src={profileImg} roundedCircle width={65} height={65} alt="Profilo" />
             </Col>
-            <Col>
+            <Col id="post">
               <Form.Control
                 as="textarea"
                 placeholder="Crea un post"
@@ -41,10 +35,7 @@ function CreatePost({ getFetch }) {
           <Row className="text-center me-3">
             <Col>
               <Button variant="light">
-                <i
-                  className="bi bi-camera-video me-2"
-                  style={{ color: "green" }}
-                ></i>
+                <i className="bi bi-camera-video me-2" style={{ color: "green" }}></i>
                 Video
               </Button>
             </Col>
@@ -55,11 +46,8 @@ function CreatePost({ getFetch }) {
               </Button>
             </Col>
             <Col>
-              <Button variant="light">
-                <i
-                  className="bi bi-newspaper me-2"
-                  style={{ color: "orange" }}
-                ></i>
+              <Button variant="light" style={{ width: "max-content" }}>
+                <i className="bi bi-newspaper me-2" style={{ color: "orange" }}></i>
                 Scrivi un articolo
               </Button>
             </Col>

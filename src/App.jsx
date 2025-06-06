@@ -7,17 +7,18 @@ import Home from "./components/Home";
 // import { useEffect } from "react";
 // import { profileAction } from "./redux/action";
 import Chat from "./components/Chat";
+import Lavoro from "./components/Lavoro";
 
 function App() {
-
   return (
     <>
       <BrowserRouter>
-        <MyNav  />
+        <MyNav />
         <Chat />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/profile/:userId" element={<ProfileDetails />} />
+          <Route path="/jobs" element={<Lavoro />} />
         </Routes>
       </BrowserRouter>
     </>

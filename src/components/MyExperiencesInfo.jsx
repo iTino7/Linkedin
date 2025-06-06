@@ -9,7 +9,7 @@ function MyExperiencesInfo({ item, bigToggle, last }) {
   const dispatch = useDispatch();
   const params = useParams();
   const changeId = () => {
-    dispatch(idAction(item._id));
+    dispatch(idAction(item));
   };
   const handleClick = () => {
     dispatch(expAction(true));

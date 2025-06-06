@@ -31,7 +31,7 @@ const ProfileBlock = () => {
 
   return (
     <>
-      <Card className="mx-auto mt-4 rounded overflow-hidden">
+      <Card className="mx-auto mt-3 rounded overflow-hidden">
         <div className="bg-light" style={{ height: "58px", position: "relative" }}>
           <div
             className="rounded-circle bg-secondary border border-white"

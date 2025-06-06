@@ -54,7 +54,7 @@ const Aside = () => {
           <p className="border-bottom pb-3">italiano</p>
         </div>
         <div className="position-relative">
-          <div className="position-absolute end-0 pen-icon">
+          <div className="position-absolute end-0 ">
             <PenIcon />
           </div>
           <h5>Profilo pubblico e URL</h5>

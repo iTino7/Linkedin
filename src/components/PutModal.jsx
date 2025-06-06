@@ -10,18 +10,15 @@ function PutModal({ open, close, item, getFetch }) {
 
   const handleSubmit = async (getFetch) => {
     try {
-      const response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/posts/" + item._id,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODNlYjBiM2IxMGJmMDAwMTVjZjIyYTQiLCJpYXQiOjE3NDg5Mzg5MzEsImV4cCI6MTc1MDE0ODUzMX0.x7bYpZXsMIBHVOtE_a-UyTnY_qWaBm7IsdvFovn6KL0",
-          },
-          body: JSON.stringify({ text }),
-        }
-      );
+      const response = await fetch("https://striveschool-api.herokuapp.com/api/posts/" + item._id, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODNlYjBiM2IxMGJmMDAwMTVjZjIyYTQiLCJpYXQiOjE3NDg5Mzg5MzEsImV4cCI6MTc1MDE0ODUzMX0.x7bYpZXsMIBHVOtE_a-UyTnY_qWaBm7IsdvFovn6KL0",
+        },
+        body: JSON.stringify({ text }),
+      });
 
       if (response.ok) {
         console.log(item._id);
@@ -38,16 +35,8 @@ function PutModal({ open, close, item, getFetch }) {
     }
   };
 
-  console.log(item);
-
   return (
-    <Modal
-      className="bg-transparent"
-      show={open}
-      onHide={close}
-      centered
-      size="lg"
-    >
+    <Modal className="bg-transparent" show={open} onHide={close} centered size="lg">
       <Modal.Header closeButton>
         <Modal.Title>Modifica un post</Modal.Title>
       </Modal.Header>

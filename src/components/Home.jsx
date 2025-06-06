@@ -46,7 +46,7 @@ const Home = () => {
   return (
     <Container>
       <Row>
-        <Col xs={3}>
+        <Col xs={3} className="p-0">
           <ProfileBlock />
           <div className="d-flex justify-content-between align-items-center bg-white border shadow-sm rounded-3 p-3 mt-3">
             <div>
@@ -77,22 +77,20 @@ const Home = () => {
             </div>
           </div>
         </Col>
-        <Col className="p-4" xs={6}>
-          <div className="h-100">
-            <CreatePost getFetch={postFetch} />
-            {loading ? (
-              <div className="text-center mt-5">
-                <Spinner animation="grow" variant="info" />
-              </div>
-            ) : (
-              post
-                .slice(-15)
-                .reverse()
-                .map((item, index) => <HomePost getFetch={postFetch} key={index} item={item} />)
-            )}
-          </div>
+        <Col className="px-4" xs={6}>
+          <CreatePost getFetch={postFetch} />
+          {loading ? (
+            <div className="text-center mt-5">
+              <Spinner animation="grow" variant="info" />
+            </div>
+          ) : (
+            post
+              .slice(-15)
+              .reverse()
+              .map((item, index) => <HomePost getFetch={postFetch} key={index} item={item} />)
+          )}
         </Col>
-        <Col xs={3}>
+        <Col className="p-0" xs={3}>
           <div className=" bg-white border rounded-3 shadow-sm p-3 mt-3">
             <h5 className="fw-semibold">LinkedIn Notizie</h5>
             <h6 className="text-secondary fw-semibold">Storie Principali</h6>

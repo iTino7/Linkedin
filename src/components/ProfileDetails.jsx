@@ -8,6 +8,8 @@ import { notScrollAction, profileAction } from "../redux/action";
 import { PlusCircleFill } from "react-bootstrap-icons";
 import MyModals from "./MyModals";
 import AddFriend from "./svg/AddFriend";
+import Footer from "./Footer";
+import PenIcon from "./svg/PenIcon";
 
 function ProfileDetails() {
   const TOKEN =
@@ -38,6 +40,14 @@ function ProfileDetails() {
           <Col xs={12} md={8}>
             <Card className="mx-auto mt-4 rounded overflow-hidden">
               <div className="bg-light" style={{ height: "140px", position: "relative" }}>
+                <div className="overflow-hidden" style={{ height: "inherit" }}>
+                  <img
+                    src="https://healthyresumes.com/wp-content/uploads/2022/10/LinkedIn-Background-Photo-20-1.webp"
+                    alt=""
+                    className="img-fluid"
+                    width="100%"
+                  />
+                </div>{" "}
                 <div
                   className="rounded-circle bg-secondary border border-white"
                   style={{
@@ -66,16 +76,24 @@ function ProfileDetails() {
 
                   {params.userId === "me" && (
                     <div
-                      className="bg-white border rounded-circle p-1"
+                      className="rounded-circle"
                       style={{
                         position: "absolute",
-                        right: "-5px",
-                        bottom: "-5px",
+                        right: "-6px",
+                        bottom: "12px",
                         fontSize: "1rem",
                         color: "#0d6efd",
                       }}
                     >
-                      <PlusCircleFill style={{ cursor: "pointer" }} onClick={() => bigToggle()} />
+                      <div className="position-relative">
+                        <div
+                          className="rounded-circle position-absolute bg-light"
+                          style={{ boxShadow: "0px 0px 0 1px gray", width: "25px", height: "25px", top: "2px", right: "-2px" }}
+                        ></div>
+                        <div className="position-relative text-primary ">
+                          <PlusCircleFill style={{ cursor: "pointer" }} onClick={() => bigToggle()} />
+                        </div>
+                      </div>
                     </div>
                   )}
                 </div>
@@ -121,8 +139,8 @@ function ProfileDetails() {
                       </span>
                       <br />
                       <span className="text-primary small text-decoration-underline">Mostra dettagli</span>
-                      <i
-                        className="bi bi-pencil position-absolute"
+                      <div
+                        className=" position-absolute"
                         style={{
                           top: "12px",
                           right: "12px",
@@ -130,7 +148,9 @@ function ProfileDetails() {
                           fontSize: "1rem",
                           color: "#6c757d",
                         }}
-                      ></i>
+                      >
+                        <PenIcon />{" "}
+                      </div>
                     </div>
                   </Col>
                   <Col md={6}>
@@ -151,6 +171,7 @@ function ProfileDetails() {
             <Aside />
           </Col>
         </Row>
+        <Footer />
       </Container>
     </>
   );

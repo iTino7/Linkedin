@@ -21,6 +21,8 @@ function MyNav() {
   const [query, setQuery] = useState("");
   const baseEndpoint = "https://strive-benchmark.herokuapp.com/api/jobs?search=";
   const navigate = useNavigate();
+  const profile = useSelector((state) => state.profile.user);
+  const params = useParams();
   // const [jobs, setJobs] = useState([]);
 
   const handleChange = (e) => {
@@ -169,9 +171,56 @@ function MyNav() {
         </Nav>
       </Container>
       {location.pathname !== "/" && location.pathname !== "/jobs" && (
-        <div className={` w-100 h-100 position-absolute bg-danger z-n1 slide-down ${down && "expandable"}`}></div>
+        <div className={` w-100 h-100 position-absolute bg-white z-n1 slide-down shadow-sm border-bottom  ${down && "expandable"}`}>
+          <Container>
+            <div>
+              <div className="d-flex align-items-center px-3 gap-2 mt-2">
+                <div>
+                  <img src={profile?.image} alt="" width={32} height={32} className="rounded-circle" />
+                </div>
+                <div>
+                  <h6 className="mb-0">
+                    {profile?.name} {profile?.surname}
+                  </h6>
+                  <p className="mb-0  p-0  fs7">{profile?.title}</p>
+                </div>
+                <button className="btn btn-outline-dark  border border-dark rounded-pill px-3 py-1 ms-auto">
+                  {" "}
+                  {me?.image === profile?.image ? "Risorse" : "Altro"}
+                </button>
+                <button className="btn btn-outline-primary   border border-primary rounded-pill px-3 py-1">
+                  {me?.image === profile?.image ? "Aggiungi sezione del profilo" : "Messaggio"}
+                </button>
+                <button className="btn btn-primary  rounded-pill fw-bold px-3 py-1 ">
+                  {me?.image === profile?.image ? (
+                    "Disponibile per"
+                  ) : (
+                    <div className="d-flex align-items-center add-coll gap-1">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        version="1.0"
+                        width="41.000000pt"
+                        height="24.000000pt"
+                        viewBox="0 0 41.000000 53.000000"
+                        preserveAspectRatio="xMidYMid meet"
+                      >
+                        <g transform="translate(0.000000,53.000000) scale(0.100000,-0.100000)" fill="#ffffff" stroke="none">
+                          <path d="M150 390 c-11 -11 -20 -29 -20 -40 0 -26 34 -60 60 -60 26 0 60 34 60 60 0 11 -9 29 -20 40 -11 11 -29 20 -40 20 -11 0 -29 -9 -40 -20z"></path>
+                          <path d="M310 290 c0 -13 -7 -20 -20 -20 -11 0 -20 -4 -20 -10 0 -5 9 -10 20 -10 13 0 20 -7 20 -20 0 -11 5 -20 10 -20 6 0 10 9 10 20 0 13 7 20 20 20 11 0 20 5 20 10 0 6 -9 10 -20 10 -13 0 -20 7 -20 20 0 11 -4 20 -10 20 -5 0 -10 -9 -10 -20z"></path>
+                          <path d="M146 254 c-11 -10 -16 -34 -16 -70 l0 -54 60 0 60 0 0 54 c0 63 -16 86 -60 86 -16 0 -36 -7 -44 -16z"></path>
+                        </g>
+                      </svg>
+                      <span>Collegati</span>
+                    </div>
+                  )}
+                </button>
+              </div>
+              <div></div>
+            </div>
+          </Container>
+        </div>
       )}
-      <div className="w-100 h-100 position-absolute bg-white z-n1 "></div>
+      <div className="w-100 h-100 position-absolute bg-white z-n1  border-bottom "></div>
     </Navbar>
   );
 }

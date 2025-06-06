@@ -9,7 +9,7 @@ const JobSec = ({ data, last }) => {
           <a href={data.url} className="text-dark fw-semibold fs-5" target="_blank" rel="noreferrer">
             {data.title}
           </a>
-          <p>{data.category}</p>
+          <p className="text-end">{data.category}</p>
         </div>
       </div>
     </div>

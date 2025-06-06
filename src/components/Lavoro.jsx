@@ -51,7 +51,7 @@ const Lavoro = () => {
               <JobSec key={jobData._id} data={jobData} last={i === jobs.length - 1} />
             ))}
           </div>
-          {jobs.length < 1 && <h1 className="text-center mt-5 text-primary">NON TROVATO </h1>}
+          {jobs?.length < 1 && <h1 className="text-center mt-5 text-primary">NON TROVATO </h1>}
         </Col>
       </Row>
     </Container>

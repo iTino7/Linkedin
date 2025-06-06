@@ -33,6 +33,9 @@ const ProfileBlock = () => {
     <>
       <Card className="mx-auto mt-3 rounded overflow-hidden">
         <div className="bg-light" style={{ height: "58px", position: "relative" }}>
+          <div className="overflow-hidden" style={{ height: "inherit" }}>
+            <img src="https://healthyresumes.com/wp-content/uploads/2022/10/LinkedIn-Background-Photo-20-1.webp" alt="" className="img-fluid" width="100%" />
+          </div>
           <div
             className="rounded-circle bg-secondary border border-white"
             style={{

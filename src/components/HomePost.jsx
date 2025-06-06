@@ -4,6 +4,7 @@ import DeletePost from "./deletePost";
 import PenIcon from "./svg/PenIcon";
 import { useState } from "react";
 import PutModal from "./PutModal";
+import CommentArea from "./CommentArea";
 
 function HomePost({ item, getFetch }) {
   const myId = "683eb0b3b10bf00015cf22a4";
@@ -69,6 +70,7 @@ function HomePost({ item, getFetch }) {
           )}
         </Row>
       </Container>
+      <CommentArea asin={item._id} />
       <PutModal open={open} close={close} item={item} getFetch={getFetch} />
     </div>
   );

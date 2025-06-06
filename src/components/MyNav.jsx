@@ -8,9 +8,10 @@ import MessSvg from "./svg/MessSvg";
 import NotySvg from "./svg/NotySvg";
 import AziendeSvg from "./svg/AziendeSvg";
 import { useDispatch, useSelector } from "react-redux";
-import { profileAction, queryAction } from "../redux/action";
+import { getJobsAction, profileAction, queryAction } from "../redux/action";
 import { useEffect, useState } from "react";
 import HouseActiveSvg from "./svg/HouseActiveSvg";
+import LavoroActiveSvg from "./svg/LavoroActiveSvg";
 
 function MyNav() {
   const [down, setDown] = useState(false);
@@ -18,11 +19,16 @@ function MyNav() {
   const me = useSelector((state) => state.me.me);
   const location = useLocation();
   const [query, setQuery] = useState("");
+  const baseEndpoint = "https://strive-benchmark.herokuapp.com/api/jobs?search=";
   // const [jobs, setJobs] = useState([]);
 
   const handleChange = (e) => {
     setQuery(e.target.value);
     dispatch(queryAction(query));
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(getJobsAction(baseEndpoint + query + "&limit=15"));
   };
 
   const TOKEN =
@@ -30,6 +36,7 @@ function MyNav() {
 
   useEffect(() => {
     dispatch(profileAction(TOKEN, "me"));
+    dispatch(getJobsAction(baseEndpoint + "" + "&limit=10"));
   }, []);
 
   useEffect(() => {
@@ -47,7 +54,7 @@ function MyNav() {
             alt="LinkedIn Logo"
             style={{ width: "34px", height: "34px", marginRight: "8px" }}
           />
-          <Form className="d-none d-lg-block">
+          <Form className="d-none d-lg-block" onSubmit={handleSubmit}>
             <Row className="align-items-center">
               <Col xs="auto">
                 <Form.Control
@@ -86,7 +93,7 @@ function MyNav() {
               location.pathname === "/jobs" && "active-nav"
             }`}
           >
-            {location.pathname === "/jobs" ? <HouseActiveSvg /> : <LavoroSvg />}
+            {location.pathname === "/jobs" ? <LavoroActiveSvg /> : <LavoroSvg />}
 
             <span style={{ fontSize: "0.75rem" }}>Lavoro</span>
           </Link>
@@ -158,7 +165,9 @@ function MyNav() {
           </Dropdown>
         </Nav>
       </Container>
-      {location.pathname !== "/" && <div className={` w-100 h-100 position-absolute bg-danger z-n1 slide-down ${down && "expandable"}`}></div>}{" "}
+      {location.pathname !== "/" && location.pathname !== "/jobs" && (
+        <div className={` w-100 h-100 position-absolute bg-danger z-n1 slide-down ${down && "expandable"}`}></div>
+      )}
       <div className="w-100 h-100 position-absolute bg-white z-n1 "></div>
     </Navbar>
   );

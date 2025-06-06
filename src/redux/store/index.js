@@ -7,6 +7,8 @@ import idReducers from "../reducers/idReducers";
 import expReducers from "../reducers/expReduces";
 import meReducers from "../reducers/meReduces";
 import { queryAction } from "../action";
+import jobsReducer from "../reducers/jobReduces";
+import queryReducers from "../reducers/queryReduces";
 
 const rootReducers = combineReducers({
   profile: profilesReduces,
@@ -15,7 +17,8 @@ const rootReducers = combineReducers({
   id: idReducers,
   exp: expReducers,
   me: meReducers,
-  query: queryAction,
+  query: queryReducers,
+  job: jobsReducer,
 });
 
 const store = configureStore({

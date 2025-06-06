@@ -47,7 +47,7 @@ function ProfileDetails() {
                     className="img-fluid"
                     width="100%"
                   />
-                </div>{" "}
+                </div>
                 <div
                   className="rounded-circle bg-secondary border border-white"
                   style={{

@@ -1,7 +1,7 @@
 import { SET_QUERY } from "../action";
 
 const initialState = {
-  value: false,
+  value: "",
 };
 
 const queryReducers = (state = initialState, action) => {

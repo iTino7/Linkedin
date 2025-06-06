@@ -2,12 +2,18 @@ import { Col, Container, Row } from "react-bootstrap";
 import ProfileBlock from "./ProfileBlock";
 import ElmSvg from "./svg/ElemSvg";
 import AddFriend from "./svg/AddFriend";
-import { ListUl } from "react-bootstrap-icons";
+import { ListUl, PencilSquare } from "react-bootstrap-icons";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getJobsAction } from "../redux/action";
+import JobSec from "./JobSec";
 
 const Lavoro = () => {
   // https://strive-benchmark.herokuapp.com/api/jobs
-  const jobs = [];
-
+  const dispatch = useDispatch();
+  const query = useSelector((state) => state.query.value);
+  const jobs = useSelector((state) => state.job.content.data);
+  //   const jobs = useSelector((state) => state.jobs.content.data);
   return (
     <Container>
       <Row>
@@ -32,12 +38,18 @@ const Lavoro = () => {
               <ElmSvg />
               <h6 className="m-0 p-0">Le mie offerte di lavoro</h6>
             </div>
+            <div className="d-flex align-items-center text-primary gap-2 mb-3 border-top pt-3">
+              <PencilSquare />
+              <h6 className="m-0 p-0">Pubblica offerta gratuita</h6>
+            </div>
           </div>
         </Col>
         <Col>
-          {jobs?.map((jobData) => (
-            <Job key={jobData._id} data={jobData} h={true} />
-          ))}
+          <div className="bg-white border rounded-3 shadow-sm  mt-3">
+            {jobs?.map((jobData, i) => (
+              <JobSec key={jobData._id} data={jobData} last={i === jobs.length - 1} />
+            ))}
+          </div>
         </Col>
       </Row>
     </Container>

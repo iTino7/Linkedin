@@ -21,12 +21,14 @@ function ProfileDetails() {
   const scroll = useSelector((state) => state.scroll.value);
   const exp = useSelector((state) => state.exp.value);
   const [big, setBig] = useState(false);
+  const params = useParams();
+
+  // const rand = parseInt(params.userId.split("")[2]);
 
   const bigToggle = () => {
     setBig(!big);
     dispatch(notScrollAction());
   };
-  const params = useParams();
 
   useEffect(() => {
     dispatch(profileAction(TOKEN, params.userId));
@@ -42,12 +44,16 @@ function ProfileDetails() {
               <div className="bg-light" style={{ height: "140px", position: "relative" }}>
                 <div className="overflow-hidden" style={{ height: "inherit" }}>
                   <img
-                    src="https://healthyresumes.com/wp-content/uploads/2022/10/LinkedIn-Background-Photo-20-1.webp"
+                    src={
+                      params.userId === "me"
+                        ? `https://healthyresumes.com/wp-content/uploads/2022/10/LinkedIn-Background-Photo-20-1.webp`
+                        : `https://resumekraft.com/wp-content/uploads/2021/08/linkedin-background-photo-default-1024x333.jpg`
+                    }
                     alt=""
                     className="img-fluid"
                     width="100%"
                   />
-                </div>{" "}
+                </div>
                 <div
                   className="rounded-circle bg-secondary border border-white"
                   style={{

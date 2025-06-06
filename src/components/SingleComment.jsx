@@ -9,7 +9,7 @@ const SingleComment = (props) => {
       {star.map(
         (star) =>
           star <= parseInt(props.value) && (
-            <span className="text-danger" key={`${star}-${props.id}`}>
+            <span className="text-primary" key={`${star}-${props.id}`}>
               ★
             </span>
           )

@@ -85,3 +85,6 @@ svg {
 .slide-down {
   transition: all 0.6s ease-in-out;
 }
+.loading-del {
+  scale: 41;
+}

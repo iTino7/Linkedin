@@ -16,7 +16,7 @@ function CreatePostModal({ open, close, getFetch }) {
       const formData = new FormData();
       formData.append("profile", file);
 
-      const resp = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${id}/picture`, {
+      const resp = await fetch(` https://striveschool-api.herokuapp.com/api/posts/${id}`, {
         method: "POST",
         body: formData,
         headers: {
@@ -26,7 +26,7 @@ function CreatePostModal({ open, close, getFetch }) {
       });
 
       if (resp.ok) {
-        return resp.json();
+        console.log(yea);
       } else {
         throw new Error("errore nella fetch");
       }
@@ -38,7 +38,10 @@ function CreatePostModal({ open, close, getFetch }) {
   };
   const handleSubmit = () => {
     textFetch(getFetch);
-    idPost && imageFetch(idPost._id, prew);
+    // idPost && imageFetch(idPost._id, prew);
+  };
+  const onFileChange = (e) => {
+    setPrew(e.target.files[0]);
   };
   const textFetch = async (getFetch) => {
     try {
@@ -54,7 +57,8 @@ function CreatePostModal({ open, close, getFetch }) {
 
       if (response.ok) {
         const data = await response.json();
-        setIdPost(data);
+        console.log(data._id);
+        prew && imageFetch(data._id, prew);
         getFetch();
         setText("");
       } else {
@@ -67,7 +71,6 @@ function CreatePostModal({ open, close, getFetch }) {
       close();
     }
   };
-  console.log(prew);
 
   return (
     <Modal className="bg-transparent" show={open} onHide={close} centered size="lg">
@@ -96,7 +99,7 @@ function CreatePostModal({ open, close, getFetch }) {
             <Image />
           </div>
         </label>
-        <Form.Control type="file" className="d-none" name="updateImg" id="updateImg" onChange={(e) => e.target.files[0] && setPrew(e.target.files[0])} />
+        <Form.Control type="file" className="d-none" name="updateImg" id="updateImg" onChange={onFileChange} />
         <Button variant="primary" onClick={() => handleSubmit()}>
           Pubblica
         </Button>

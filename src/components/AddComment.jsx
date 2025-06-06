@@ -70,7 +70,7 @@ const AddComment = (props) => {
             <option>5</option>
           </Form.Control>
         </Form.Group>
-        <Button variant="success" type="submit">
+        <Button variant="primary" type="submit">
           Invia
         </Button>
       </Form>

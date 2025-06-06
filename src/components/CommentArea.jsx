@@ -38,10 +38,10 @@ const CommentArea = (props) => {
   }, []);
 
   return (
-    <div>
-      <span className="fs-2 mt-2 me-4">Comments:</span>
+    <div className="my-2">
+      <span className="fs-6 fw-semibold mt-2 me-4">Comments:</span>
       {isLoading ? (
-        <Spinner animation="border" variant="danger" size="lg" />
+        <Spinner animation="border" variant="primary" size="lg" />
       ) : (
         <CommentList fetchPass={fetchComments} comments={comments.filter((comment) => comment.elementId === props.asin)} />
       )}

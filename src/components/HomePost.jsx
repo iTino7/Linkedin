@@ -1,4 +1,4 @@
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Row, Spinner } from "react-bootstrap";
 
 import DeletePost from "./deletePost";
 import PenIcon from "./svg/PenIcon";
@@ -10,7 +10,7 @@ function HomePost({ item, getFetch }) {
   const myId = "683eb0b3b10bf00015cf22a4";
 
   const [open, setOpen] = useState(false);
-
+  const [load, setLoad] = useState(false);
   const close = () => setOpen(false);
   const openModal = () => setOpen(true);
 
@@ -31,14 +31,17 @@ function HomePost({ item, getFetch }) {
       }
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoad(false);
     }
   };
 
   return (
-    <div className="bg-white  border mb-3 shadow-sm rounded">
+    <div className="bg-white  border mb-3 shadow-sm rounded position-relative overflow-hidden">
       <Container>
         <Row className="d-flex flex-column">
-          <h1 className="fs-5 mt-2 d-flex justify-content-between">
+          {load && <Spinner animation="grow" variant="light" className="position-absolute top-50 start-50 loading-del" />}
+          <div className=" fs-5 mt-2 d-flex justify-content-between">
             {item.user.title}
 
             {item.user._id === myId && (
@@ -47,13 +50,18 @@ function HomePost({ item, getFetch }) {
                   <div onClick={() => openModal()}>
                     <PenIcon />
                   </div>
-                  <div onClick={() => deleteFetch(getFetch)}>
+                  <div
+                    onClick={() => {
+                      setLoad(true);
+                      deleteFetch(getFetch);
+                    }}
+                  >
                     <DeletePost />
                   </div>
                 </div>
               </>
             )}
-          </h1>
+          </div>
           <Col className="d-flex align-items-center">
             <img src={item.user.image} width="65px" height="65px" className="rounded-circle" style={{ objectFit: "cover" }} alt="" />
             <p className="mb-0 ms-2">
@@ -69,8 +77,9 @@ function HomePost({ item, getFetch }) {
             </Col>
           )}
         </Row>
+
+        <CommentArea asin={item._id} />
       </Container>
-      <CommentArea asin={item._id} />
       <PutModal open={open} close={close} item={item} getFetch={getFetch} />
     </div>
   );

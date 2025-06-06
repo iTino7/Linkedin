@@ -14,6 +14,7 @@ const Lavoro = () => {
   const query = useSelector((state) => state.query.value);
   const jobs = useSelector((state) => state.job.content.data);
   //   const jobs = useSelector((state) => state.jobs.content.data);
+
   return (
     <Container>
       <Row>
@@ -50,6 +51,7 @@ const Lavoro = () => {
               <JobSec key={jobData._id} data={jobData} last={i === jobs.length - 1} />
             ))}
           </div>
+          {jobs.length < 1 && <h1 className="text-center mt-5 text-primary">NON TROVATO </h1>}
         </Col>
       </Row>
     </Container>

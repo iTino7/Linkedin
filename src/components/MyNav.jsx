@@ -1,6 +1,6 @@
 import { Button, Col, Container, Dropdown, Form, Nav, Navbar, NavDropdown, Row } from "react-bootstrap";
 import { Grid3x3GapFill } from "react-bootstrap-icons"; // Importata Grid3x3GapFill per l'icona "Per le aziende"
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import HouseLink from "./svg/HouseLink";
 import ReteSvg from "./svg/ReteSvg";
 import LavoroSvg from "./svg/LavoroSvg";
@@ -20,6 +20,7 @@ function MyNav() {
   const location = useLocation();
   const [query, setQuery] = useState("");
   const baseEndpoint = "https://strive-benchmark.herokuapp.com/api/jobs?search=";
+  const navigate = useNavigate();
   // const [jobs, setJobs] = useState([]);
 
   const handleChange = (e) => {
@@ -29,6 +30,7 @@ function MyNav() {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(getJobsAction(baseEndpoint + query + "&limit=15"));
+    setQuery("");
   };
 
   const TOKEN =
@@ -62,6 +64,7 @@ function MyNav() {
                   placeholder="Cerca"
                   className="mr-sm-2"
                   value={query}
+                  onFocus={() => navigate("/jobs")}
                   onChange={handleChange}
                   style={{
                     width: "280px",

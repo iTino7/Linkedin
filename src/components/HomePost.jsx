@@ -4,6 +4,7 @@ import DeletePost from "./deletePost";
 import PenIcon from "./svg/PenIcon";
 import { useState } from "react";
 import PutModal from "./PutModal";
+import CommentSection from "./CommentSection";
 
 function HomePost({ item, getFetch }) {
   const myId = "683eb0b3b10bf00015cf22a4";
@@ -54,7 +55,14 @@ function HomePost({ item, getFetch }) {
             )}
           </h1>
           <Col className="d-flex align-items-center">
-            <img src={item.user.image} width="65px" height="65px" className="rounded-circle" style={{ objectFit: "cover" }} alt="" />
+            <img
+              src={item.user.image}
+              width="65px"
+              height="65px"
+              className="rounded-circle"
+              style={{ objectFit: "cover" }}
+              alt=""
+            />
             <p className="mb-0 ms-2">
               {item.user.name} {item.user.surname}
             </p>
@@ -70,6 +78,7 @@ function HomePost({ item, getFetch }) {
         </Row>
       </Container>
       <PutModal open={open} close={close} item={item} getFetch={getFetch} />
+      <CommentSection elementId={item._id} />
     </div>
   );
 }
